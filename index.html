@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Физиотека — аппаратная физиотерапия НейроДЭНС для дома</title>
+<meta name="description" content="Российские медицинские аппараты НейроДЭНС для домашней электростимуляции. Для спины и суставов. Оплата онлайн, доставка СДЭК.">
+<style>
+:root{
+  --blue:#1e6fd0;
+  --blue-dark:#155aad;
+  --teal:#12b5b0;
+  --ink:#1c2733;
+  --muted:#5b6b7a;
+  --line:#e4e9ef;
+  --bg:#f5f8fb;
+  --white:#ffffff;
+  --radius:16px;
+  --shadow:0 10px 30px rgba(30,111,208,.10);
+  --shadow-hover:0 16px 40px rgba(30,111,208,.18);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  color:var(--ink);
+  background:var(--white);
+  font-size:18px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3{line-height:1.2;margin:0 0 .5em}
+h1{font-size:2.4rem;font-weight:800;letter-spacing:-.02em}
+h2{font-size:1.9rem;font-weight:800;letter-spacing:-.01em}
+h3{font-size:1.35rem;font-weight:700}
+p{margin:0 0 1em}
+a{color:var(--blue);text-decoration:none}
+a:hover{text-decoration:underline}
+.container{max-width:1120px;margin:0 auto;padding:0 20px}
+.section{padding:72px 0}
+.section-tint{background:var(--bg)}
+/* отступ под липкой шапкой при переходе по якорям */
+section[id],a[id]{scroll-margin-top:88px}
+
+/* Header */
+.header{
+  position:sticky;top:0;z-index:50;
+  background:rgba(255,255,255,.92);
+  backdrop-filter:saturate(180%) blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.header-inner{display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.35rem;color:var(--ink);text-decoration:none;letter-spacing:-.02em}
+.logo .mark{
+  width:30px;height:30px;border-radius:9px;
+  background:linear-gradient(135deg,var(--blue),var(--teal));
+  display:inline-block;position:relative;flex:0 0 auto;
+}
+.logo .mark::after{content:"";position:absolute;inset:9px;border-radius:3px;background:#fff;opacity:.9}
+.nav{display:flex;gap:26px}
+.nav a{color:var(--muted);font-size:1rem;font-weight:600}
+.nav a:hover{color:var(--blue);text-decoration:none}
+.burger{display:none;background:none;border:0;cursor:pointer;padding:8px;color:var(--ink)}
+.burger span{display:block;width:24px;height:2px;background:currentColor;margin:5px 0;border-radius:2px}
+
+/* Buttons */
+.btn{
+  display:inline-block;cursor:pointer;border:0;
+  padding:15px 30px;border-radius:999px;
+  font-size:1.05rem;font-weight:700;
+  background:linear-gradient(135deg,var(--blue),var(--teal));
+  color:#fff;text-decoration:none;
+  box-shadow:0 8px 20px rgba(18,181,176,.25);
+  transition:transform .18s ease,box-shadow .18s ease,filter .18s ease;
+}
+.btn:hover{transform:translateY(-2px);box-shadow:0 14px 28px rgba(18,181,176,.35);filter:brightness(1.04);text-decoration:none}
+.btn:active{transform:translateY(0)}
+.btn-outline{
+  background:#fff;color:var(--blue);
+  border:2px solid var(--blue);box-shadow:none;
+}
+.btn-outline:hover{background:var(--blue);color:#fff}
+
+/* Hero */
+.hero{background:linear-gradient(180deg,#eef5fd 0%,#f5f8fb 100%);padding:80px 0 72px}
+.hero h1{max-width:14ch}
+.hero p{font-size:1.2rem;color:var(--muted);max-width:60ch;margin-bottom:1.8em}
+
+/* Trust bar */
+.trust{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.trust-item{display:flex;flex-direction:column;align-items:center;text-align:center;gap:12px;padding:8px}
+.trust-item .ico{
+  width:56px;height:56px;border-radius:14px;
+  background:#e8f2fd;color:var(--blue);
+  display:flex;align-items:center;justify-content:center;
+}
+.trust-item .ico svg{width:28px;height:28px}
+.trust-item span{font-weight:600;font-size:1rem;color:var(--ink)}
+
+/* Problem */
+.problem p{font-size:1.25rem;max-width:70ch;color:var(--ink);margin:0 auto;text-align:center}
+
+/* Product cards */
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:30px}
+.card{
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+  box-shadow:var(--shadow);overflow:hidden;display:flex;flex-direction:column;
+  transition:transform .2s ease,box-shadow .2s ease;
+}
+.card:hover{transform:translateY(-4px);box-shadow:var(--shadow-hover)}
+.card-photo{
+  position:relative;aspect-ratio:4/5;background:linear-gradient(160deg,#f4f9ff,#eaf6f5);
+  display:flex;align-items:center;justify-content:center;
+}
+.card-photo img{width:100%;height:100%;object-fit:contain;display:block}
+.card-photo .ph{color:#9fb2c4;font-weight:600;font-size:1rem;letter-spacing:.02em}
+.badge{
+  position:absolute;top:16px;left:16px;z-index:2;
+  background:var(--white);color:var(--blue);
+  font-size:.85rem;font-weight:700;padding:7px 14px;border-radius:999px;
+  box-shadow:0 4px 12px rgba(0,0,0,.08);
+}
+.card-body{padding:26px 26px 28px;display:flex;flex-direction:column;flex:1}
+.card-body h3{margin-bottom:.4em}
+.card-body .desc{color:var(--muted);font-size:1.02rem;flex:1}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 4px}
+.chip{background:#eef4fb;color:#2b5a86;font-size:.82rem;font-weight:600;padding:6px 12px;border-radius:999px;white-space:nowrap}
+.specs{font-size:.9rem;color:var(--muted);margin:14px 0 22px;line-height:1.5}
+.card .btn{align-self:flex-start}
+.consent{font-size:.82rem;color:var(--muted);margin:14px 0 0;line-height:1.5}
+.card-photo{text-decoration:none}
+.card-actions{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.card-link{color:var(--blue);font-weight:600;font-size:1rem}
+.card-link:hover{text-decoration:none;opacity:.8}
+.sep{padding:0 .16em}
+
+/* Детальные секции аппаратов */
+.detail{padding:66px 0;border-top:1px solid var(--line)}
+.detail-inner{display:grid;grid-template-columns:1fr 1fr;gap:46px;align-items:start}
+.detail .badge-inline{display:inline-block;background:#e8f2fd;color:var(--blue);font-size:.85rem;font-weight:700;padding:6px 14px;border-radius:999px;margin-bottom:14px}
+.detail h2{margin:0 0 .4em}
+.detail .lead{font-size:1.08rem;color:var(--muted)}
+.gallery .main{aspect-ratio:1/1;background:linear-gradient(160deg,#f4f9ff,#eaf6f5);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow)}
+.gallery .main img{width:100%;height:100%;object-fit:contain}
+.gallery .thumbs{display:flex;gap:12px;margin-top:12px}
+.gallery .thumbs button{flex:1;aspect-ratio:4/3;border:2px solid var(--line);border-radius:12px;overflow:hidden;background:#f4f9ff;cursor:pointer;padding:0;transition:border-color .15s ease}
+.gallery .thumbs button.active{border-color:var(--blue)}
+.gallery .thumbs img{width:100%;height:100%;object-fit:cover;display:block}
+.spec-table{width:100%;border-collapse:collapse;margin:22px 0 8px;font-size:.98rem}
+.spec-table th,.spec-table td{text-align:left;padding:11px 0;border-bottom:1px solid var(--line);vertical-align:top}
+.spec-table th{color:var(--muted);font-weight:600;width:44%;padding-right:16px}
+.spec-table td{color:var(--ink);font-weight:600}
+.detail .kit{font-size:.95rem;color:var(--muted);margin:8px 0 24px;line-height:1.6}
+.detail .kit b{color:var(--ink)}
+
+/* Steps */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;counter-reset:step}
+.step{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:28px 22px;box-shadow:var(--shadow)}
+.step .num{
+  counter-increment:step;
+  width:44px;height:44px;border-radius:12px;
+  background:linear-gradient(135deg,var(--blue),var(--teal));color:#fff;
+  display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.2rem;margin-bottom:16px;
+}
+.step .num::before{content:counter(step)}
+.step p{margin:0;color:var(--ink);font-size:1.02rem}
+
+/* Delivery */
+.pay-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:30px}
+.pay-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:32px;box-shadow:var(--shadow)}
+.pay-card h3{color:var(--blue);display:flex;align-items:center;gap:12px}
+.pay-card h3 svg{width:26px;height:26px;flex:0 0 auto}
+.pay-card p{margin:0;color:var(--muted)}
+
+/* FAQ */
+.faq{max-width:840px;margin:0 auto}
+.faq details{
+  background:#fff;border:1px solid var(--line);border-radius:14px;
+  margin-bottom:14px;box-shadow:0 4px 14px rgba(30,111,208,.05);overflow:hidden;
+}
+.faq summary{
+  cursor:pointer;padding:20px 24px;font-weight:700;font-size:1.1rem;
+  list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;
+}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-size:1.6rem;color:var(--blue);font-weight:400;transition:transform .2s ease}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq .answer{padding:0 24px 22px;color:var(--muted)}
+
+/* Footer */
+.footer{background:#132030;color:#c6d2de;padding:56px 0 40px;font-size:.95rem}
+.footer a{color:#9ecbff}
+.footer .warn{
+  text-align:center;font-weight:800;letter-spacing:.02em;color:#fff;
+  border:2px solid #2e4358;border-radius:14px;padding:20px;margin-bottom:36px;
+  font-size:1.05rem;
+}
+.footer-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;margin-bottom:32px}
+.footer-links{display:flex;flex-direction:column;gap:10px}
+.footer h4{color:#fff;font-size:1rem;margin:0 0 14px}
+.footer .req{font-size:.88rem;line-height:1.7;color:#9fb0c0}
+.footer .note{font-size:.85rem;color:#8496a8;margin-top:24px;line-height:1.6}
+.footer .copy{border-top:1px solid #24374b;padding-top:22px;margin-top:22px;font-size:.85rem;color:#8496a8}
+
+/* Cookie banner */
+.cookie{
+  position:fixed;left:16px;right:16px;bottom:16px;z-index:100;
+  max-width:760px;margin:0 auto;
+  background:#fff;border:1px solid var(--line);border-radius:14px;
+  box-shadow:0 12px 40px rgba(0,0,0,.18);
+  padding:18px 20px;display:flex;align-items:center;gap:18px;
+}
+.cookie p{margin:0;font-size:.92rem;color:var(--muted);flex:1}
+.cookie .btn{padding:11px 24px;font-size:.98rem;white-space:nowrap}
+.cookie.hidden{display:none}
+
+@media(max-width:820px){
+  body{font-size:17px}
+  h1{font-size:1.9rem}
+  h2{font-size:1.55rem}
+  .section{padding:52px 0}
+  .nav{
+    display:none;position:absolute;top:68px;left:0;right:0;
+    flex-direction:column;gap:0;background:#fff;border-bottom:1px solid var(--line);
+    padding:8px 0;box-shadow:0 12px 24px rgba(0,0,0,.08);
+  }
+  .nav.open{display:flex}
+  .nav a{padding:14px 20px;border-bottom:1px solid var(--line)}
+  .burger{display:block}
+  .trust{grid-template-columns:repeat(2,1fr);gap:26px 12px}
+  .cards{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr}
+  .pay-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr;gap:28px}
+  .cookie{flex-direction:column;text-align:center;gap:12px}
+  .detail-inner{grid-template-columns:1fr;gap:26px}
+}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="container header-inner">
+    <a href="#top" class="logo"><span class="mark"></span>Физиотека</a>
+    <nav class="nav" id="nav">
+      <a href="#apparaty">Аппараты</a>
+      <a href="#kak-rabotaet">Как работает</a>
+      <a href="#dostavka">Доставка и оплата</a>
+      <a href="#voprosy">Вопросы</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="Меню"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<a id="top"></a>
+
+<!-- СЕКЦИЯ 1 — Первый экран -->
+<section class="hero">
+  <div class="container">
+    <h1>Аппаратная физиотерапия у вас дома. Для спины и суставов.</h1>
+    <p>Российские медицинские аппараты НейроДЭНС для домашней электростимуляции. Помогают снять напряжение и поддержать подвижность за 20–30 минут в день.</p>
+    <a href="#apparaty" class="btn">Выбрать аппарат</a>
+  </div>
+</section>
+
+<!-- СЕКЦИЯ 2 — Полоса доверия -->
+<section class="section">
+  <div class="container">
+    <div class="trust">
+      <div class="trust-item">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></svg></span>
+        <span>Зарегистрировано в Росздравнадзоре</span>
+      </div>
+      <div class="trust-item">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l9-6 9 6v12"/><path d="M9 21v-6h6v6"/></svg></span>
+        <span>Сделано в России</span>
+      </div>
+      <div class="trust-item">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 4.9 5.4.8-3.9 3.8.9 5.4-4.8-2.5-4.8 2.5.9-5.4L4.2 7.7l5.4-.8z"/></svg></span>
+        <span>Гарантия 1 год</span>
+      </div>
+      <div class="trust-item">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></span>
+        <span>Оплата онлайн</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- СЕКЦИЯ 3 — Проблема -->
+<section class="section section-tint problem">
+  <div class="container">
+    <p>Боль и скованность в спине или коленях мешают двигаться, а на физиокабинеты не всегда есть время. Эти аппараты переносят процедуру домой: вы ложитесь на панель или надеваете манжету, выбираете режим и занимаетесь своими делами.</p>
+  </div>
+</section>
+
+<!-- СЕКЦИЯ 4 — Аппараты -->
+<section class="section" id="apparaty">
+  <div class="container">
+    <h2 style="text-align:center;margin-bottom:.9em">Аппараты</h2>
+    <div class="cards">
+
+      <!-- Карточка 1 — Артро -->
+      <article class="card">
+        <a class="card-photo" href="#artro">
+          <span class="badge">Для коленного сустава</span>
+          <img src="artro.jpg" alt="НейроДЭНС·Артро" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <span class="ph" style="display:none;position:absolute;inset:0;align-items:center;justify-content:center">фото аппарата</span>
+        </a>
+        <div class="card-body">
+          <h3>НейроДЭНС<span class="sep">·</span>Артро</h3>
+          <p class="desc">Манжета для домашней электростимуляции колена. Мягко снимает ощущение усталости и поддерживает подвижность.</p>
+          <div class="chips">
+            <span class="chip">4 электрода</span>
+            <span class="chip">4 режима</span>
+            <span class="chip">Аккумулятор Li-ion</span>
+            <span class="chip">Зарядка USB-C</span>
+            <span class="chip">≈ 490 г</span>
+            <span class="chip">Таймер и автоотключение</span>
+          </div>
+          <p class="specs">Медицинское изделие · РЗН 2023/19433 · регистрация бессрочно · гарантия 1 год</p>
+          <div class="card-actions">
+            <!-- заменить на платёжную ссылку Робокассы для Артро -->
+            <a href="#robokassa-artro" class="btn">Купить</a>
+            <a href="#artro" class="card-link">Подробнее и фото →</a>
+          </div>
+          <p class="consent">Нажимая «Купить», вы соглашаетесь с <a href="oferta.html">офертой</a> и <a href="politika.html">политикой конфиденциальности</a>.</p>
+        </div>
+      </article>
+
+      <!-- Карточка 2 — Вертебра -->
+      <article class="card">
+        <a class="card-photo" href="#vertebra">
+          <span class="badge">Для спины и позвоночника</span>
+          <img src="vertebra.jpg" alt="НейроДЭНС·Вертебра" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <span class="ph" style="display:none;position:absolute;inset:0;align-items:center;justify-content:center">фото аппарата</span>
+        </a>
+        <div class="card-body">
+          <h3>НейроДЭНС<span class="sep">·</span>Вертебра</h3>
+          <p class="desc">Анатомическая панель для всей длины спины. Снимает напряжение и помогает мышцам восстановиться после нагрузок.</p>
+          <div class="chips">
+            <span class="chip">48 электродов</span>
+            <span class="chip">5 программ</span>
+            <span class="chip">10–200 Гц</span>
+            <span class="chip">Сеть 220В или батарейки</span>
+            <span class="chip">Дисплей и пульт</span>
+            <span class="chip">Таймер и автоотключение</span>
+          </div>
+          <p class="specs">Медицинское изделие · ФСР 2010/08179 · регистрация бессрочно · гарантия 1 год</p>
+          <div class="card-actions">
+            <!-- заменить на платёжную ссылку Робокассы для Вертебры -->
+            <a href="#robokassa-vertebra" class="btn">Купить</a>
+            <a href="#vertebra" class="card-link">Подробнее и фото →</a>
+          </div>
+          <p class="consent">Нажимая «Купить», вы соглашаетесь с <a href="oferta.html">офертой</a> и <a href="politika.html">политикой конфиденциальности</a>.</p>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ДЕТАЛЬНАЯ СЕКЦИЯ — Артро -->
+<section class="section detail" id="artro">
+  <div class="container">
+    <div class="detail-inner">
+      <div class="gallery">
+        <div class="main"><img id="artro-main" src="artro.jpg" alt="НейроДЭНС·Артро"></div>
+        <div class="thumbs">
+          <button class="active" onclick="swap('artro-main','artro.jpg',this)"><img src="artro.jpg" alt="Аппарат Артро"></button>
+          <button onclick="swap('artro-main','artro-use.jpg',this)"><img src="artro-use.jpg" alt="Артро на колене"></button>
+        </div>
+      </div>
+      <div>
+        <span class="badge-inline">Для коленного сустава</span>
+        <h2>НейроДЭНС<span class="sep">·</span>Артро</h2>
+        <p class="lead">Аппарат электростимуляции для области коленного сустава. Помогает снизить ощущение дискомфорта, уменьшить скованность и поддерживать подвижность при регулярном использовании. Манжета с четырьмя электродами равномерно охватывает колено и удобно фиксируется на ноге — устройство не мешает повседневным делам.</p>
+        <table class="spec-table">
+          <tr><th>Назначение</th><td>Электростимуляция и электромассаж области колена</td></tr>
+          <tr><th>Электроды</th><td>4 независимых электрода</td></tr>
+          <tr><th>Режимы</th><td>4: при дискомфорте, после нагрузки, восстановительный, электромассаж</td></tr>
+          <tr><th>Питание</th><td>Встроенный аккумулятор Li-ion, зарядка USB-C</td></tr>
+          <tr><th>Вес</th><td>≈ 490 г</td></tr>
+          <tr><th>Габариты</th><td>300 × 165 × 110 мм</td></tr>
+          <tr><th>Регистрация</th><td>Медицинское изделие, РЗН 2023/19433 (бессрочно)</td></tr>
+          <tr><th>Гарантия</th><td>12 месяцев</td></tr>
+        </table>
+        <p class="kit"><b>В комплекте:</b> аппарат, манжета для колена, кабель USB, зарядное устройство, руководство по эксплуатации, гарантийный талон.</p>
+        <div class="card-actions">
+          <!-- заменить на платёжную ссылку Робокассы для Артро -->
+          <a href="#robokassa-artro" class="btn">Купить</a>
+          <a href="#apparaty" class="card-link">← Все аппараты</a>
+        </div>
+        <p class="consent">Нажимая «Купить», вы соглашаетесь с <a href="oferta.html">офертой</a> и <a href="politika.html">политикой конфиденциальности</a>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ДЕТАЛЬНАЯ СЕКЦИЯ — Вертебра -->
+<section class="section detail section-tint" id="vertebra">
+  <div class="container">
+    <div class="detail-inner">
+      <div class="gallery">
+        <div class="main"><img id="vertebra-main" src="vertebra.jpg" alt="НейроДЭНС·Вертебра"></div>
+        <div class="thumbs">
+          <button class="active" onclick="swap('vertebra-main','vertebra.jpg',this)"><img src="vertebra.jpg" alt="Аппарат Вертебра"></button>
+          <button onclick="swap('vertebra-main','vertebra-use.jpg',this)"><img src="vertebra-use.jpg" alt="Вертебра в применении"></button>
+        </div>
+      </div>
+      <div>
+        <span class="badge-inline">Для спины и позвоночника</span>
+        <h2>НейроДЭНС<span class="sep">·</span>Вертебра</h2>
+        <p class="lead">Аппарат электростимуляции для области спины. Анатомическая панель с 48 электродами работает по всей длине спины — от шейного до поясничного отдела. Помогает снять напряжение, расслабить мышцы и поддержать комфортное состояние. Достаточно лечь на панель на 20–30 минут, остальное аппарат делает сам.</p>
+        <table class="spec-table">
+          <tr><th>Назначение</th><td>Электростимуляция и электромассаж вдоль позвоночной зоны</td></tr>
+          <tr><th>Электроды</th><td>48 электродов</td></tr>
+          <tr><th>Программы</th><td>5 программ воздействия с адаптацией под ощущения</td></tr>
+          <tr><th>Частоты</th><td>10–200 Гц</td></tr>
+          <tr><th>Питание</th><td>Сеть 220 В (адаптер) или батарейки АА, 2 шт.</td></tr>
+          <tr><th>Управление</th><td>Электронное, пульт с дисплеем</td></tr>
+          <tr><th>Регистрация</th><td>Медицинское изделие, ФСР 2010/08179 (бессрочно)</td></tr>
+          <tr><th>Гарантия</th><td>12 месяцев</td></tr>
+        </table>
+        <p class="kit"><b>В комплекте:</b> аппарат, пульт управления, электродная панель, сетевой адаптер, руководство по эксплуатации, гарантийный талон.</p>
+        <div class="card-actions">
+          <!-- заменить на платёжную ссылку Робокассы для Вертебры -->
+          <a href="#robokassa-vertebra" class="btn">Купить</a>
+          <a href="#apparaty" class="card-link">← Все аппараты</a>
+        </div>
+        <p class="consent">Нажимая «Купить», вы соглашаетесь с <a href="oferta.html">офертой</a> и <a href="politika.html">политикой конфиденциальности</a>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- СЕКЦИЯ 5 — Как это работает -->
+<section class="section section-tint" id="kak-rabotaet">
+  <div class="container">
+    <h2 style="text-align:center;margin-bottom:.9em">Как это работает</h2>
+    <div class="steps">
+      <div class="step"><div class="num"></div><p>Электроды создают мягкие импульсы и передают их в ткани.</p></div>
+      <div class="step"><div class="num"></div><p>Улучшается кровообращение и питание клеток.</p></div>
+      <div class="step"><div class="num"></div><p>Мышцы расслабляются, ощущение боли и спазма уменьшается.</p></div>
+      <div class="step"><div class="num"></div><p>Возвращается лёгкость и свобода движения.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- СЕКЦИЯ 6 — Доставка и оплата -->
+<section class="section" id="dostavka">
+  <div class="container">
+    <h2 style="text-align:center;margin-bottom:.9em">Доставка и оплата</h2>
+    <div class="pay-grid">
+      <div class="pay-card">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>Оплата</h3>
+        <p>Банковской картой онлайн через сервис Робокасса. После оплаты приходит электронный чек в соответствии с 54-ФЗ.</p>
+      </div>
+      <div class="pay-card">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 3h13v13H1z"/><path d="M14 8h4l3 3v5h-7z"/><circle cx="5.5" cy="18.5" r="1.5"/><circle cx="17.5" cy="18.5" r="1.5"/></svg>Доставка</h3>
+        <p>По России службой СДЭК: курьером до двери или до пункта выдачи. Стоимость и сроки рассчитываются при оформлении в зависимости от региона (ориентировочно 2–7 рабочих дней).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- СЕКЦИЯ 7 — Частые вопросы -->
+<section class="section section-tint" id="voprosy">
+  <div class="container">
+    <h2 style="text-align:center;margin-bottom:.9em">Частые вопросы</h2>
+    <div class="faq">
+      <details>
+        <summary>Это больно?</summary>
+        <div class="answer">Нет, воздействие мягкое, интенсивность настраивается под ваши ощущения.</div>
+      </details>
+      <details>
+        <summary>Как часто применять?</summary>
+        <div class="answer">Обычно курс из 10–15 процедур по 20–30 минут, 1–2 раза в день. Точный режим — в инструкции.</div>
+      </details>
+      <details>
+        <summary>Есть противопоказания?</summary>
+        <div class="answer">Да. Не рекомендуется при кардиостимуляторе, онкологических заболеваниях, беременности, эпилепсии и острых воспалениях. Перед применением проконсультируйтесь со специалистом.</div>
+      </details>
+      <details>
+        <summary>Можно вместе с лекарствами и физиопроцедурами?</summary>
+        <div class="answer">Как правило, да, аппарат применяют в комплексе. Уточните у врача.</div>
+      </details>
+      <details>
+        <summary>Есть гарантия?</summary>
+        <div class="answer">Да, 1 год плюс сервисная поддержка.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- СЕКЦИЯ 8 — Подвал -->
+<footer class="footer">
+  <div class="container">
+    <div class="warn">ИМЕЮТСЯ ПРОТИВОПОКАЗАНИЯ. НЕОБХОДИМА КОНСУЛЬТАЦИЯ СПЕЦИАЛИСТА.</div>
+    <div class="footer-grid">
+      <div>
+        <h4>Физиотека</h4>
+        <div class="footer-links">
+          <a href="oferta.html">Оферта</a>
+          <a href="politika.html">Политика конфиденциальности</a>
+        </div>
+      </div>
+      <div>
+        <h4>Реквизиты продавца</h4>
+        <div class="req">
+          Продавец: ООО «Сигнум-Трейд»<br>
+          ИНН: 9701275105<br>
+          Юридический адрес: 101000, г. Москва, пер. Лучников, д. 2<br>
+          E-mail: <a href="mailto:signum.treyd@yandex.ru">signum.treyd@yandex.ru</a>
+        </div>
+      </div>
+    </div>
+    <p class="note">Аппараты НейроДЭНС произведены ООО «ТРОНИТЕК», Россия. Магазин «Физиотека» (ООО «Сигнум-Трейд») реализует продукцию бренда НейроДЭНС.</p>
+    <div class="copy">© 2026 Физиотека · ООО «Сигнум-Трейд»</div>
+  </div>
+</footer>
+
+<!-- Cookie-уведомление -->
+<div class="cookie" id="cookie">
+  <p>Мы используем cookies для работы сайта. Продолжая пользоваться сайтом, вы соглашаетесь с <a href="politika.html">политикой конфиденциальности</a>.</p>
+  <button class="btn" id="cookie-ok">Хорошо</button>
+</div>
+
+<script>
+// Галерея аппаратов: переключение главного фото по клику на миниатюру
+function swap(mainId, src, btn){
+  document.getElementById(mainId).src = src;
+  var thumbs = btn.parentElement.querySelectorAll('button');
+  for(var i=0;i<thumbs.length;i++) thumbs[i].classList.remove('active');
+  btn.classList.add('active');
+}
+
+// Мобильное меню
+var burger=document.getElementById('burger'),nav=document.getElementById('nav');
+burger.addEventListener('click',function(){nav.classList.toggle('open')});
+nav.addEventListener('click',function(e){if(e.target.tagName==='A')nav.classList.remove('open')});
+
+// Cookie-баннер: запоминаем согласие только на время сессии (переменная в памяти, без localStorage)
+var cookieAccepted=false;
+var cookie=document.getElementById('cookie');
+if(cookieAccepted)cookie.classList.add('hidden');
+document.getElementById('cookie-ok').addEventListener('click',function(){
+  cookieAccepted=true;
+  cookie.classList.add('hidden');
+});
+</script>
+
+</body>
+</html>
