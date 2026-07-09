@@ -134,6 +134,11 @@ section[id],a[id]{scroll-margin-top:88px}
 .card-link{color:var(--blue);font-weight:600;font-size:1rem}
 .card-link:hover{text-decoration:none;opacity:.8}
 .sep{padding:0 .16em}
+/* Цена (значение подставите позже) */
+.price{display:flex;align-items:baseline;gap:12px;margin:4px 0 16px}
+.price .val{font-size:1.6rem;font-weight:800;color:var(--ink)}
+.price .old{font-size:1.05rem;font-weight:600;color:#9fb0be;text-decoration:line-through}
+.price .todo{font-size:1.15rem;font-weight:700;color:var(--muted)}
 
 /* Детальные секции аппаратов */
 .detail{padding:66px 0;border-top:1px solid var(--line)}
@@ -320,8 +325,13 @@ section[id],a[id]{scroll-margin-top:88px}
             <span class="chip">Таймер и автоотключение</span>
           </div>
           <p class="specs">Медицинское изделие · РЗН 2023/19433 · регистрация бессрочно · гарантия 1 год</p>
+          <div class="price">
+            <!-- ЦЕНА АРТРО: замените строку ниже на цену, напр.: <span class="val">12 900 ₽</span>
+                 (по желанию старая цена: <span class="old">15 900 ₽</span>) -->
+            <span class="todo">Цена уточняется</span>
+          </div>
           <div class="card-actions">
-            <!-- заменить на платёжную ссылку Робокассы для Артро -->
+            <!-- ССЫЛКА ОПЛАТЫ: замените href="#robokassa-artro" на платёжную ссылку Робокассы для Артро -->
             <a href="#robokassa-artro" class="btn">Купить</a>
             <a href="#artro" class="card-link">Подробнее и фото →</a>
           </div>
@@ -348,8 +358,13 @@ section[id],a[id]{scroll-margin-top:88px}
             <span class="chip">Таймер и автоотключение</span>
           </div>
           <p class="specs">Медицинское изделие · ФСР 2010/08179 · регистрация бессрочно · гарантия 1 год</p>
+          <div class="price">
+            <!-- ЦЕНА ВЕРТЕБРА: замените строку ниже на цену, напр.: <span class="val">24 900 ₽</span>
+                 (по желанию старая цена: <span class="old">29 900 ₽</span>) -->
+            <span class="todo">Цена уточняется</span>
+          </div>
           <div class="card-actions">
-            <!-- заменить на платёжную ссылку Робокассы для Вертебры -->
+            <!-- ССЫЛКА ОПЛАТЫ: замените href="#robokassa-vertebra" на платёжную ссылку Робокассы для Вертебры -->
             <a href="#robokassa-vertebra" class="btn">Купить</a>
             <a href="#vertebra" class="card-link">Подробнее и фото →</a>
           </div>
@@ -388,8 +403,12 @@ section[id],a[id]{scroll-margin-top:88px}
           <tr><th>Гарантия</th><td>12 месяцев</td></tr>
         </table>
         <p class="kit"><b>В комплекте:</b> аппарат, манжета для колена, кабель USB, зарядное устройство, руководство по эксплуатации, гарантийный талон.</p>
+        <div class="price">
+          <!-- ЦЕНА АРТРО: замените строку ниже на цену, напр.: <span class="val">12 900 ₽</span> -->
+          <span class="todo">Цена уточняется</span>
+        </div>
         <div class="card-actions">
-          <!-- заменить на платёжную ссылку Робокассы для Артро -->
+          <!-- ССЫЛКА ОПЛАТЫ: замените href="#robokassa-artro" на платёжную ссылку Робокассы для Артро -->
           <a href="#robokassa-artro" class="btn">Купить</a>
           <a href="#apparaty" class="card-link">← Все аппараты</a>
         </div>
@@ -426,8 +445,12 @@ section[id],a[id]{scroll-margin-top:88px}
           <tr><th>Гарантия</th><td>12 месяцев</td></tr>
         </table>
         <p class="kit"><b>В комплекте:</b> аппарат, пульт управления, электродная панель, сетевой адаптер, руководство по эксплуатации, гарантийный талон.</p>
+        <div class="price">
+          <!-- ЦЕНА ВЕРТЕБРА: замените строку ниже на цену, напр.: <span class="val">24 900 ₽</span> -->
+          <span class="todo">Цена уточняется</span>
+        </div>
         <div class="card-actions">
-          <!-- заменить на платёжную ссылку Робокассы для Вертебры -->
+          <!-- ССЫЛКА ОПЛАТЫ: замените href="#robokassa-vertebra" на платёжную ссылку Робокассы для Вертебры -->
           <a href="#robokassa-vertebra" class="btn">Купить</a>
           <a href="#apparaty" class="card-link">← Все аппараты</a>
         </div>
