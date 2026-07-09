@@ -12,7 +12,10 @@
       "Bash(git config *)",
       "Bash(gh api *)",
       "Bash(netlify --version)",
-      "Bash(curl -s -o /dev/null -w \"github.com/physioteka -> %{http_code}\\\\n\" https://github.com/physioteka)"
+      "Bash(curl -s -o /dev/null -w \"github.com/physioteka -> %{http_code}\\\\n\" https://github.com/physioteka)",
+      "Bash(git push *)",
+      "Bash(curl -s -o /dev/null -w \"github.com -> %{http_code}\\\\n\" https://github.com)",
+      "Bash(curl -s -o /dev/null -w \"api.github.com -> %{http_code}\\\\n\" https://api.github.com)"
     ]
   }
 }

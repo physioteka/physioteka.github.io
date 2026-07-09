@@ -159,6 +159,16 @@ section[id],a[id]{scroll-margin-top:88px}
 .detail .kit{font-size:.95rem;color:var(--muted);margin:8px 0 24px;line-height:1.6}
 .detail .kit b{color:var(--ink)}
 
+/* Документы / сертификаты */
+.docs{display:grid;grid-template-columns:repeat(2,1fr);gap:28px;max-width:840px;margin:0 auto}
+.doc-card{display:flex;gap:18px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px;text-decoration:none;transition:transform .2s ease,box-shadow .2s ease}
+.doc-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-hover);text-decoration:none}
+.doc-card img{width:110px;height:auto;border:1px solid var(--line);border-radius:8px;flex:0 0 auto}
+.doc-info{display:flex;flex-direction:column;gap:6px}
+.doc-info b{color:var(--ink);font-size:1.05rem}
+.doc-info span{color:var(--muted);font-size:.92rem}
+.doc-info .doc-open{color:var(--blue);font-weight:600;margin-top:4px}
+
 /* Steps */
 .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;counter-reset:step}
 .step{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:28px 22px;box-shadow:var(--shadow)}
@@ -240,6 +250,7 @@ section[id],a[id]{scroll-margin-top:88px}
   .footer-grid{grid-template-columns:1fr;gap:28px}
   .cookie{flex-direction:column;text-align:center;gap:12px}
   .detail-inner{grid-template-columns:1fr;gap:26px}
+  .docs{grid-template-columns:1fr;max-width:420px}
 }
 </style>
 </head>
@@ -399,7 +410,7 @@ section[id],a[id]{scroll-margin-top:88px}
           <tr><th>Питание</th><td>Встроенный аккумулятор Li-ion, зарядка USB-C</td></tr>
           <tr><th>Вес</th><td>≈ 490 г</td></tr>
           <tr><th>Габариты</th><td>300 × 165 × 110 мм</td></tr>
-          <tr><th>Регистрация</th><td>Медицинское изделие, РЗН 2023/19433 (бессрочно)</td></tr>
+          <tr><th>Регистрация</th><td>Медицинское изделие, <a href="ru-artro.pdf" target="_blank" rel="noopener">РЗН 2023/19433</a> (бессрочно)</td></tr>
           <tr><th>Гарантия</th><td>12 месяцев</td></tr>
         </table>
         <p class="kit"><b>В комплекте:</b> аппарат, манжета для колена, кабель USB, зарядное устройство, руководство по эксплуатации, гарантийный талон.</p>
@@ -441,7 +452,7 @@ section[id],a[id]{scroll-margin-top:88px}
           <tr><th>Частоты</th><td>10–200 Гц</td></tr>
           <tr><th>Питание</th><td>Сеть 220 В (адаптер) или батарейки АА, 2 шт.</td></tr>
           <tr><th>Управление</th><td>Электронное, пульт с дисплеем</td></tr>
-          <tr><th>Регистрация</th><td>Медицинское изделие, ФСР 2010/08179 (бессрочно)</td></tr>
+          <tr><th>Регистрация</th><td>Медицинское изделие, <a href="ru-vertebra.pdf" target="_blank" rel="noopener">ФСР 2010/08179</a> (бессрочно)</td></tr>
           <tr><th>Гарантия</th><td>12 месяцев</td></tr>
         </table>
         <p class="kit"><b>В комплекте:</b> аппарат, пульт управления, электродная панель, сетевой адаптер, руководство по эксплуатации, гарантийный талон.</p>
@@ -519,6 +530,32 @@ section[id],a[id]{scroll-margin-top:88px}
   </div>
 </section>
 
+<!-- СЕКЦИЯ — Документы / сертификаты -->
+<section class="section" id="dokumenty">
+  <div class="container">
+    <h2 style="text-align:center;margin-bottom:.35em">Документы</h2>
+    <p style="text-align:center;color:var(--muted);max-width:62ch;margin:0 auto 2em">Оба аппарата — зарегистрированные медицинские изделия. Регистрационные удостоверения Росздравнадзора можно открыть и проверить.</p>
+    <div class="docs">
+      <a class="doc-card" href="ru-artro.pdf" target="_blank" rel="noopener">
+        <img src="ru-artro-thumb.jpg" alt="Регистрационное удостоверение НейроДЭНС·Артро" loading="lazy">
+        <div class="doc-info">
+          <b>НейроДЭНС·Артро</b>
+          <span>Рег. удостоверение<br>РЗН 2023/19433</span>
+          <span class="doc-open">Открыть PDF →</span>
+        </div>
+      </a>
+      <a class="doc-card" href="ru-vertebra.pdf" target="_blank" rel="noopener">
+        <img src="ru-vertebra-thumb.jpg" alt="Регистрационное удостоверение НейроДЭНС·Вертебра" loading="lazy">
+        <div class="doc-info">
+          <b>НейроДЭНС·Вертебра</b>
+          <span>Рег. удостоверение<br>ФСР 2010/08179</span>
+          <span class="doc-open">Открыть PDF →</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
 <!-- СЕКЦИЯ 8 — Подвал -->
 <footer class="footer">
   <div class="container">
@@ -527,6 +564,7 @@ section[id],a[id]{scroll-margin-top:88px}
       <div>
         <h4>Физиотека</h4>
         <div class="footer-links">
+          <a href="#dokumenty">Документы и сертификаты</a>
           <a href="oferta.html">Оферта</a>
           <a href="politika.html">Политика конфиденциальности</a>
         </div>
