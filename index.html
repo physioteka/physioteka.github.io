@@ -5,6 +5,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Физиотека — аппаратная физиотерапия НейроДЭНС для дома</title>
 <meta name="description" content="Российские медицинские аппараты НейроДЭНС для домашней электростимуляции. Для спины и суставов. Оплата онлайн, доставка СДЭК.">
+<link rel="canonical" href="https://physioteka.github.io/">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="favicon-32.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#1e6fd0">
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Физиотека">
+<meta property="og:title" content="Физиотека — аппаратная физиотерапия НейроДЭНС для дома">
+<meta property="og:description" content="Российские медицинские аппараты НейроДЭНС для домашней электростимуляции. Для спины и суставов. Оплата онлайн, доставка СДЭК.">
+<meta property="og:url" content="https://physioteka.github.io/">
+<meta property="og:image" content="https://physioteka.github.io/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="ru_RU">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Физиотека — аппаратная физиотерапия НейроДЭНС для дома">
+<meta name="twitter:description" content="Российские медицинские аппараты НейроДЭНС для домашней электростимуляции. Для спины и суставов.">
+<meta name="twitter:image" content="https://physioteka.github.io/og-image.jpg">
 <style>
 :root{
   --blue:#1e6fd0;
@@ -83,9 +102,12 @@ section[id],a[id]{scroll-margin-top:88px}
 .btn-outline:hover{background:var(--blue);color:#fff}
 
 /* Hero */
-.hero{background:linear-gradient(180deg,#eef5fd 0%,#f5f8fb 100%);padding:80px 0 72px}
-.hero h1{max-width:14ch}
-.hero p{font-size:1.2rem;color:var(--muted);max-width:60ch;margin-bottom:1.8em}
+.hero{background:linear-gradient(180deg,#eef5fd 0%,#f5f8fb 100%);padding:72px 0 64px}
+.hero-inner{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+.hero h1{max-width:16ch}
+.hero p{font-size:1.2rem;color:var(--muted);max-width:52ch;margin-bottom:1.8em}
+.hero-media{border-radius:22px;overflow:hidden;box-shadow:var(--shadow);aspect-ratio:1/1;background:linear-gradient(160deg,#ffffff,#eef4fb)}
+.hero-media img{width:100%;height:100%;object-fit:cover;display:block}
 
 /* Trust bar */
 .trust{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
@@ -251,8 +273,78 @@ section[id],a[id]{scroll-margin-top:88px}
   .cookie{flex-direction:column;text-align:center;gap:12px}
   .detail-inner{grid-template-columns:1fr;gap:26px}
   .docs{grid-template-columns:1fr;max-width:420px}
+  .hero-inner{grid-template-columns:1fr;gap:26px}
+  .hero-media{max-width:420px;margin:0 auto;width:100%}
 }
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://physioteka.github.io/#org",
+      "name": "Физиотека",
+      "legalName": "ООО «Сигнум-Трейд»",
+      "url": "https://physioteka.github.io/",
+      "logo": "https://physioteka.github.io/favicon-256.png",
+      "email": "signum.treyd@yandex.ru",
+      "taxID": "9701275105",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "RU",
+        "addressLocality": "Москва",
+        "postalCode": "101000",
+        "streetAddress": "пер. Лучников, д. 2"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://physioteka.github.io/#website",
+      "name": "Физиотека",
+      "url": "https://physioteka.github.io/",
+      "inLanguage": "ru-RU",
+      "publisher": { "@id": "https://physioteka.github.io/#org" }
+    },
+    {
+      "@type": "Product",
+      "name": "НейроДЭНС·Артро",
+      "image": "https://physioteka.github.io/artro.jpg",
+      "description": "Аппарат электростимуляции для области коленного сустава. Помогает снизить ощущение дискомфорта, уменьшить скованность и поддержать подвижность.",
+      "brand": { "@type": "Brand", "name": "НейроДЭНС" },
+      "category": "Медицинские изделия / Физиотерапевтические аппараты",
+      "url": "https://physioteka.github.io/#artro",
+      "additionalProperty": [
+        { "@type": "PropertyValue", "name": "Регистрационное удостоверение", "value": "РЗН 2023/19433" },
+        { "@type": "PropertyValue", "name": "Гарантия", "value": "12 месяцев" }
+      ]
+    },
+    {
+      "@type": "Product",
+      "name": "НейроДЭНС·Вертебра",
+      "image": "https://physioteka.github.io/vertebra.jpg",
+      "description": "Аппарат электростимуляции для области спины. Анатомическая панель с 48 электродами работает по всей длине спины — снимает напряжение и поддерживает мышцы.",
+      "brand": { "@type": "Brand", "name": "НейроДЭНС" },
+      "category": "Медицинские изделия / Физиотерапевтические аппараты",
+      "url": "https://physioteka.github.io/#vertebra",
+      "additionalProperty": [
+        { "@type": "PropertyValue", "name": "Регистрационное удостоверение", "value": "ФСР 2010/08179" },
+        { "@type": "PropertyValue", "name": "Гарантия", "value": "12 месяцев" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "Это больно?", "acceptedAnswer": { "@type": "Answer", "text": "Нет, воздействие мягкое, интенсивность настраивается под ваши ощущения." } },
+        { "@type": "Question", "name": "Как часто применять?", "acceptedAnswer": { "@type": "Answer", "text": "Обычно курс из 10–15 процедур по 20–30 минут, 1–2 раза в день. Точный режим — в инструкции." } },
+        { "@type": "Question", "name": "Есть противопоказания?", "acceptedAnswer": { "@type": "Answer", "text": "Да. Не рекомендуется при кардиостимуляторе, онкологических заболеваниях, беременности, эпилепсии и острых воспалениях. Перед применением проконсультируйтесь со специалистом." } },
+        { "@type": "Question", "name": "Можно вместе с лекарствами и физиопроцедурами?", "acceptedAnswer": { "@type": "Answer", "text": "Как правило, да, аппарат применяют в комплексе. Уточните у врача." } },
+        { "@type": "Question", "name": "Есть гарантия?", "acceptedAnswer": { "@type": "Answer", "text": "Да, 1 год плюс сервисная поддержка." } }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -273,10 +365,15 @@ section[id],a[id]{scroll-margin-top:88px}
 
 <!-- СЕКЦИЯ 1 — Первый экран -->
 <section class="hero">
-  <div class="container">
-    <h1>Аппаратная физиотерапия у вас дома. Для спины и суставов.</h1>
-    <p>Российские медицинские аппараты НейроДЭНС для домашней электростимуляции. Помогают снять напряжение и поддержать подвижность за 20–30 минут в день.</p>
-    <a href="#apparaty" class="btn">Выбрать аппарат</a>
+  <div class="container hero-inner">
+    <div class="hero-text">
+      <h1>Аппаратная физиотерапия у вас дома. Для спины и суставов.</h1>
+      <p>Российские медицинские аппараты НейроДЭНС для домашней электростимуляции. Помогают снять напряжение и поддержать подвижность за 20–30 минут в день.</p>
+      <a href="#apparaty" class="btn">Выбрать аппарат</a>
+    </div>
+    <div class="hero-media">
+      <img src="artro.jpg?v=2" alt="Медицинский аппарат НейроДЭНС·Артро для коленного сустава" width="1000" height="1250" fetchpriority="high">
+    </div>
   </div>
 </section>
 
@@ -321,7 +418,7 @@ section[id],a[id]{scroll-margin-top:88px}
       <article class="card">
         <a class="card-photo" href="#artro">
           <span class="badge">Для коленного сустава</span>
-          <img src="artro.jpg?v=2" alt="НейроДЭНС·Артро" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <img loading="lazy" decoding="async" src="artro.jpg?v=2" alt="НейроДЭНС·Артро" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
           <span class="ph" style="display:none;position:absolute;inset:0;align-items:center;justify-content:center">фото аппарата</span>
         </a>
         <div class="card-body">
@@ -354,7 +451,7 @@ section[id],a[id]{scroll-margin-top:88px}
       <article class="card">
         <a class="card-photo" href="#vertebra">
           <span class="badge">Для спины и позвоночника</span>
-          <img src="vertebra.jpg?v=2" alt="НейроДЭНС·Вертебра" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <img loading="lazy" decoding="async" src="vertebra.jpg?v=2" alt="НейроДЭНС·Вертебра" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
           <span class="ph" style="display:none;position:absolute;inset:0;align-items:center;justify-content:center">фото аппарата</span>
         </a>
         <div class="card-body">
@@ -392,11 +489,11 @@ section[id],a[id]{scroll-margin-top:88px}
   <div class="container">
     <div class="detail-inner">
       <div class="gallery">
-        <div class="main"><img id="artro-main" src="artro.jpg?v=2" alt="НейроДЭНС·Артро"></div>
+        <div class="main"><img loading="lazy" decoding="async" id="artro-main" src="artro.jpg?v=2" alt="НейроДЭНС·Артро"></div>
         <div class="thumbs">
-          <button class="active" onclick="swap('artro-main','artro.jpg?v=2',this)"><img src="artro.jpg?v=2" alt="Аппарат Артро"></button>
-          <button onclick="swap('artro-main','artro-use.jpg?v=2',this)"><img src="artro-use.jpg?v=2" alt="Артро на колене"></button>
-          <button onclick="swap('artro-main','artro-kit.jpg?v=2',this)"><img src="artro-kit.jpg?v=2" alt="Артро — комплект поставки"></button>
+          <button class="active" onclick="swap('artro-main','artro.jpg?v=2',this)"><img loading="lazy" decoding="async" src="artro.jpg?v=2" alt="Аппарат Артро"></button>
+          <button onclick="swap('artro-main','artro-use.jpg?v=2',this)"><img loading="lazy" decoding="async" src="artro-use.jpg?v=2" alt="Артро на колене"></button>
+          <button onclick="swap('artro-main','artro-kit.jpg?v=2',this)"><img loading="lazy" decoding="async" src="artro-kit.jpg?v=2" alt="Артро — комплект поставки"></button>
         </div>
       </div>
       <div>
@@ -434,11 +531,11 @@ section[id],a[id]{scroll-margin-top:88px}
   <div class="container">
     <div class="detail-inner">
       <div class="gallery">
-        <div class="main"><img id="vertebra-main" src="vertebra.jpg?v=2" alt="НейроДЭНС·Вертебра"></div>
+        <div class="main"><img loading="lazy" decoding="async" id="vertebra-main" src="vertebra.jpg?v=2" alt="НейроДЭНС·Вертебра"></div>
         <div class="thumbs">
-          <button class="active" onclick="swap('vertebra-main','vertebra.jpg?v=2',this)"><img src="vertebra.jpg?v=2" alt="Аппарат Вертебра"></button>
-          <button onclick="swap('vertebra-main','vertebra-use.jpg?v=2',this)"><img src="vertebra-use.jpg?v=2" alt="Вертебра в применении"></button>
-          <button onclick="swap('vertebra-main','vertebra-detail.jpg?v=2',this)"><img src="vertebra-detail.jpg?v=2" alt="Вертебра — крупный план"></button>
+          <button class="active" onclick="swap('vertebra-main','vertebra.jpg?v=2',this)"><img loading="lazy" decoding="async" src="vertebra.jpg?v=2" alt="Аппарат Вертебра"></button>
+          <button onclick="swap('vertebra-main','vertebra-use.jpg?v=2',this)"><img loading="lazy" decoding="async" src="vertebra-use.jpg?v=2" alt="Вертебра в применении"></button>
+          <button onclick="swap('vertebra-main','vertebra-detail.jpg?v=2',this)"><img loading="lazy" decoding="async" src="vertebra-detail.jpg?v=2" alt="Вертебра — крупный план"></button>
         </div>
       </div>
       <div>
