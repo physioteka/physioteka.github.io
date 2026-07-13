@@ -108,30 +108,32 @@ section[id],a[id]{scroll-margin-top:88px}
 .hero p{font-size:1.2rem;color:var(--muted);max-width:52ch;margin-bottom:1.8em}
 .hero-media{border-radius:22px;overflow:hidden;box-shadow:var(--shadow);aspect-ratio:1/1;background:linear-gradient(160deg,#ffffff,#eef4fb)}
 .hero-media img{width:100%;height:100%;object-fit:cover;display:block}
-/* Заглавная стопка из двух карточек */
+/* Заглавная стопка из двух карточек «веером» */
+.hero-text-media{padding:6px}
 .hero-stack{position:relative;aspect-ratio:1/1;cursor:pointer;user-select:none;-webkit-tap-highlight-color:transparent}
 .hero-card{
-  position:absolute;inset:0;border-radius:22px;overflow:hidden;
+  position:absolute;top:50%;width:70%;aspect-ratio:4/5;border-radius:20px;overflow:hidden;
   background:linear-gradient(160deg,#ffffff,#eef4fb);
-  transition:transform .55s cubic-bezier(.34,1.2,.44,1),box-shadow .45s ease;
+  transition:transform .55s cubic-bezier(.34,1.15,.44,1),box-shadow .45s ease;
   will-change:transform;
 }
 .hero-card img{width:100%;height:100%;object-fit:cover;display:block;pointer-events:none}
 .hero-card .cap{
-  position:absolute;left:16px;top:16px;z-index:2;
+  position:absolute;top:14px;left:14px;z-index:2;
   background:var(--white);color:var(--blue);
-  font-size:.85rem;font-weight:700;padding:7px 14px;border-radius:999px;
-  box-shadow:0 4px 12px rgba(0,0,0,.10);
+  font-size:.8rem;font-weight:700;padding:6px 12px;border-radius:999px;
+  box-shadow:0 4px 12px rgba(0,0,0,.10);white-space:nowrap;
 }
-.hero-card.is-front{transform:translate(0,0) rotate(0) scale(1);z-index:3;box-shadow:var(--shadow-hover)}
-.hero-card.is-back{transform:translate(26px,26px) rotate(5deg) scale(.93);z-index:2;box-shadow:0 8px 22px rgba(30,111,208,.12)}
-.hero-stack:hover .hero-card.is-front{transform:translate(-2px,-4px) rotate(-.6deg) scale(1)}
-.hero-stack:hover .hero-card.is-back{transform:translate(30px,22px) rotate(6deg) scale(.94)}
+/* передняя — слева, целиком; задняя — справа, выглядывает и подписана справа */
+.hero-card.is-front{left:0;transform:translateY(-50%) rotate(-2.5deg);z-index:3;box-shadow:var(--shadow-hover)}
+.hero-card.is-back{right:0;transform:translateY(-46%) rotate(4deg) scale(.96);z-index:2;box-shadow:0 14px 30px rgba(30,111,208,.16)}
+.hero-card.is-back .cap{left:auto;right:14px}
+.hero-stack:hover .hero-card.is-back{transform:translateY(-46%) translateX(10px) rotate(5deg) scale(.97)}
 .hero-hint{
-  display:inline-flex;align-items:center;gap:8px;margin-top:16px;
-  color:var(--muted);font-size:.92rem;font-weight:600;
+  display:inline-flex;align-items:center;gap:8px;margin-top:14px;
+  color:var(--blue);font-size:.95rem;font-weight:700;
 }
-.hero-hint svg{width:18px;height:18px}
+.hero-hint svg{width:19px;height:19px}
 
 /* Trust bar */
 .trust{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
@@ -299,6 +301,7 @@ section[id],a[id]{scroll-margin-top:88px}
   .docs{grid-template-columns:1fr;max-width:420px}
   .hero-inner{grid-template-columns:1fr;gap:26px}
   .hero-media{max-width:420px;margin:0 auto;width:100%}
+  .hero-text-media{padding:6px;max-width:440px;margin:0 auto}
 }
 </style>
 <script type="application/ld+json">
@@ -407,8 +410,8 @@ section[id],a[id]{scroll-margin-top:88px}
         </div>
       </div>
       <span class="hero-hint">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h13v10H3z"/><path d="M16 10l5-2v8l-5-2"/><path d="M8 3v2M12 3v2"/></svg>
-        Нажмите на фото — аппараты поменяются местами
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h11v11H4z"/><path d="M9 9h11v11H9z"/></svg>
+        Два аппарата — нажмите, чтобы переключить
       </span>
     </div>
   </div>
