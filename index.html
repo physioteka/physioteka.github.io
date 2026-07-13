@@ -288,6 +288,41 @@ section[id],a[id]{scroll-margin-top:88px}
 .footer .note{font-size:.85rem;color:#8496a8;margin-top:24px;line-height:1.6}
 .footer .copy{border-top:1px solid #24374b;padding-top:22px;margin-top:22px;font-size:.85rem;color:#8496a8}
 
+/* Модальная анкета заказа */
+.modal-overlay{
+  position:fixed;inset:0;z-index:200;display:none;
+  background:rgba(19,32,48,.55);backdrop-filter:blur(3px);
+  align-items:center;justify-content:center;padding:20px;
+}
+.modal-overlay.open{display:flex}
+.modal{
+  background:#fff;border-radius:20px;max-width:480px;width:100%;
+  max-height:92vh;overflow-y:auto;box-shadow:0 24px 60px rgba(0,0,0,.3);
+  padding:30px 28px;position:relative;
+}
+.modal h3{margin:0 0 4px;font-size:1.4rem}
+.modal .modal-product{color:var(--muted);font-weight:600;margin:0 0 20px}
+.modal .modal-product b{color:var(--ink)}
+.modal-close{
+  position:absolute;top:16px;right:16px;width:36px;height:36px;border:0;cursor:pointer;
+  background:#f0f4f9;border-radius:50%;color:var(--muted);font-size:1.3rem;line-height:1;
+  display:flex;align-items:center;justify-content:center;transition:background .15s ease;
+}
+.modal-close:hover{background:#e2e9f1;color:var(--ink)}
+.modal form{display:flex;flex-direction:column;gap:14px}
+.modal label{display:flex;flex-direction:column;gap:6px;font-size:.9rem;font-weight:600;color:var(--ink)}
+.modal input{
+  font:inherit;font-weight:400;padding:12px 14px;border:1.5px solid var(--line);border-radius:10px;
+  background:#fbfcfe;transition:border-color .15s ease;
+}
+.modal input:focus{outline:none;border-color:var(--blue);background:#fff}
+.modal input:user-invalid{border-color:#d9534f}
+.modal .req-star{color:#d9534f}
+.modal .modal-btn{margin-top:6px;width:100%;text-align:center;border:0}
+.modal .modal-note{font-size:.8rem;color:var(--muted);line-height:1.5;margin:4px 0 0}
+.modal .modal-error{color:#d9534f;font-size:.85rem;font-weight:600;margin:0;display:none}
+.modal .modal-error.show{display:block}
+
 /* Cookie banner */
 .cookie{
   position:fixed;left:16px;right:16px;bottom:16px;z-index:100;
@@ -524,8 +559,7 @@ section[id],a[id]{scroll-margin-top:88px}
             <span>Имеются противопоказания. Необходима консультация специалиста и ознакомление с инструкцией по применению.</span>
           </div>
           <div class="card-actions">
-            <!-- ССЫЛКА ОПЛАТЫ: замените href="#robokassa-artro" на платёжную ссылку Робокассы для Артро -->
-            <a href="#robokassa-artro" class="btn">Купить</a>
+            <button type="button" class="btn" onclick="openOrder('artro')">Купить</button>
             <a href="#artro" class="card-link">Подробнее и фото →</a>
           </div>
           <p class="consent">Нажимая «Купить», вы соглашаетесь с <a href="oferta.html">офертой</a> и <a href="politika.html">политикой конфиденциальности</a>.</p>
@@ -559,8 +593,7 @@ section[id],a[id]{scroll-margin-top:88px}
             <span>Имеются противопоказания. Необходима консультация специалиста и ознакомление с инструкцией по применению.</span>
           </div>
           <div class="card-actions">
-            <!-- ССЫЛКА ОПЛАТЫ: замените href="#robokassa-vertebra" на платёжную ссылку Робокассы для Вертебры -->
-            <a href="#robokassa-vertebra" class="btn">Купить</a>
+            <button type="button" class="btn" onclick="openOrder('vertebra')">Купить</button>
             <a href="#vertebra" class="card-link">Подробнее и фото →</a>
           </div>
           <p class="consent">Нажимая «Купить», вы соглашаетесь с <a href="oferta.html">офертой</a> и <a href="politika.html">политикой конфиденциальности</a>.</p>
@@ -608,8 +641,7 @@ section[id],a[id]{scroll-margin-top:88px}
           <span>Имеются противопоказания. Необходима консультация специалиста и ознакомление с инструкцией по применению.</span>
         </div>
         <div class="card-actions">
-          <!-- ССЫЛКА ОПЛАТЫ: замените href="#robokassa-artro" на платёжную ссылку Робокассы для Артро -->
-          <a href="#robokassa-artro" class="btn">Купить</a>
+          <button type="button" class="btn" onclick="openOrder('artro')">Купить</button>
           <a href="#apparaty" class="card-link">← Все аппараты</a>
         </div>
         <p class="consent">Нажимая «Купить», вы соглашаетесь с <a href="oferta.html">офертой</a> и <a href="politika.html">политикой конфиденциальности</a>.</p>
@@ -654,8 +686,7 @@ section[id],a[id]{scroll-margin-top:88px}
           <span>Имеются противопоказания. Необходима консультация специалиста и ознакомление с инструкцией по применению.</span>
         </div>
         <div class="card-actions">
-          <!-- ССЫЛКА ОПЛАТЫ: замените href="#robokassa-vertebra" на платёжную ссылку Робокассы для Вертебры -->
-          <a href="#robokassa-vertebra" class="btn">Купить</a>
+          <button type="button" class="btn" onclick="openOrder('vertebra')">Купить</button>
           <a href="#apparaty" class="card-link">← Все аппараты</a>
         </div>
         <p class="consent">Нажимая «Купить», вы соглашаетесь с <a href="oferta.html">офертой</a> и <a href="politika.html">политикой конфиденциальности</a>.</p>
@@ -780,6 +811,35 @@ section[id],a[id]{scroll-margin-top:88px}
   </div>
 </footer>
 
+<!-- Модальная анкета заказа -->
+<div class="modal-overlay" id="orderModal" role="dialog" aria-modal="true" aria-labelledby="orderTitle">
+  <div class="modal">
+    <button class="modal-close" type="button" id="orderClose" aria-label="Закрыть">×</button>
+    <h3 id="orderTitle">Оформление заказа</h3>
+    <p class="modal-product" id="orderProduct"></p>
+    <form id="orderForm" novalidate>
+      <label>ФИО <span class="req-star">*</span>
+        <input name="fio" type="text" autocomplete="name" required placeholder="Иванов Иван Иванович">
+      </label>
+      <label>Мобильный телефон <span class="req-star">*</span>
+        <input name="phone" type="tel" autocomplete="tel" required placeholder="+7 900 000-00-00">
+      </label>
+      <label>Город получения <span class="req-star">*</span>
+        <input name="city" type="text" autocomplete="address-level2" required placeholder="Москва">
+      </label>
+      <label>Удобный адрес ПВЗ СДЭК <span class="req-star">*</span>
+        <input name="pvz" type="text" required placeholder="Адрес пункта выдачи СДЭК">
+      </label>
+      <label>E-mail <span class="req-star">*</span>
+        <input name="email" type="email" autocomplete="email" required placeholder="you@example.ru">
+      </label>
+      <p class="modal-error" id="orderError">Заполните все обязательные поля правильно.</p>
+      <button type="submit" class="btn modal-btn" id="orderSubmit">Перейти к оплате</button>
+      <p class="modal-note">Нажимая «Перейти к оплате», вы соглашаетесь с <a href="oferta.html" target="_blank">офертой</a> и <a href="politika.html" target="_blank">политикой конфиденциальности</a>. Доставка оплачивается при получении за счёт получателя.</p>
+    </form>
+  </div>
+</div>
+
 <!-- Cookie-уведомление -->
 <div class="cookie" id="cookie">
   <p>Мы используем cookies для работы сайта и аналитики. Подробнее — в <a href="politika.html">Политике конфиденциальности</a>.</p>
@@ -790,6 +850,85 @@ section[id],a[id]{scroll-margin-top:88px}
 </div>
 
 <script>
+// ==== ОФОРМЛЕНИЕ ЗАКАЗА ====
+// 1) Данные товаров. pay — платёжная ссылка Робокассы (вставьте, когда будет готова).
+var PRODUCTS = {
+  artro:    { name: 'НейроДЭНС·Артро',    price: '18 900 ₽', pay: '' /* ← ссылка Робокассы для Артро */ },
+  vertebra: { name: 'НейроДЭНС·Вертебра', price: '85 000 ₽', pay: '' /* ← ссылка Робокассы для Вертебры */ }
+};
+// 2) Ключ Web3Forms — чтобы анкета приходила на signum.treyd@yandex.ru.
+//    Получите бесплатно на web3forms.com (введите почту), вставьте ключ сюда:
+var WEB3FORMS_KEY = '';
+
+var currentProduct = null;
+var orderModal = document.getElementById('orderModal');
+var orderForm  = document.getElementById('orderForm');
+var orderErr   = document.getElementById('orderError');
+
+function openOrder(key){
+  currentProduct = key;
+  var p = PRODUCTS[key];
+  document.getElementById('orderProduct').innerHTML = 'Товар: <b>'+p.name+'</b> — '+p.price;
+  orderErr.classList.remove('show');
+  orderModal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  setTimeout(function(){ var f=orderForm.querySelector('input'); if(f) f.focus(); }, 50);
+}
+function closeOrder(){
+  orderModal.classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.getElementById('orderClose').addEventListener('click', closeOrder);
+orderModal.addEventListener('click', function(e){ if(e.target===orderModal) closeOrder(); });
+document.addEventListener('keydown', function(e){ if(e.key==='Escape' && orderModal.classList.contains('open')) closeOrder(); });
+
+orderForm.addEventListener('submit', function(e){
+  e.preventDefault();
+  // Проверка обязательных полей
+  var inputs = orderForm.querySelectorAll('input[required]');
+  var ok = true;
+  inputs.forEach(function(i){ if(!i.value.trim() || !i.checkValidity()) ok=false; });
+  if(!ok){ orderErr.classList.add('show'); return; }
+  orderErr.classList.remove('show');
+
+  var p = PRODUCTS[currentProduct];
+  var data = {
+    'Товар': p.name + ' (' + p.price + ')',
+    'ФИО': orderForm.fio.value.trim(),
+    'Телефон': orderForm.phone.value.trim(),
+    'Город получения': orderForm.city.value.trim(),
+    'Адрес ПВЗ СДЭК': orderForm.pvz.value.trim(),
+    'E-mail': orderForm.email.value.trim()
+  };
+
+  var submitBtn = document.getElementById('orderSubmit');
+  submitBtn.disabled = true; submitBtn.textContent = 'Отправляем…';
+
+  function proceed(){
+    // После анкеты — переход к оплате (или уведомление, если ссылка ещё не вставлена)
+    if(p.pay){ window.location.href = p.pay; }
+    else {
+      alert('Заявка принята! Мы свяжемся с вами для подтверждения заказа и оплаты.');
+      closeOrder();
+    }
+    submitBtn.disabled = false; submitBtn.textContent = 'Перейти к оплате';
+    orderForm.reset();
+  }
+
+  if(WEB3FORMS_KEY){
+    fetch('https://api.web3forms.com/submit', {
+      method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body: JSON.stringify(Object.assign({
+        access_key: WEB3FORMS_KEY,
+        subject: 'Новый заказ — ' + p.name,
+        from_name: 'Физиотека'
+      }, data))
+    }).then(function(){ proceed(); }).catch(function(){ proceed(); });
+  } else {
+    proceed();
+  }
+});
+
 // Заглавная стопка: стрелка меняет карточки местами (клик по карточке ведёт в раздел аппарата)
 function swapHero(e){
   if(e){ e.preventDefault(); e.stopPropagation(); }
