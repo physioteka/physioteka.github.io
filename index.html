@@ -113,10 +113,11 @@ section[id],a[id]{scroll-margin-top:88px}
 .hero-stack{position:relative;aspect-ratio:1/1;cursor:pointer;user-select:none;-webkit-tap-highlight-color:transparent}
 .hero-card{
   position:absolute;top:50%;width:70%;aspect-ratio:4/5;border-radius:20px;overflow:hidden;
-  background:linear-gradient(160deg,#ffffff,#eef4fb);
+  background:linear-gradient(160deg,#ffffff,#eef4fb);text-decoration:none;
   transition:transform .55s cubic-bezier(.34,1.15,.44,1),box-shadow .45s ease;
   will-change:transform;
 }
+.hero-card:hover{text-decoration:none}
 .hero-card img{width:100%;height:100%;object-fit:cover;display:block;pointer-events:none}
 .hero-card .cap{
   position:absolute;top:14px;left:14px;z-index:2;
@@ -128,12 +129,25 @@ section[id],a[id]{scroll-margin-top:88px}
 .hero-card.is-front{left:0;transform:translateY(-50%) rotate(-2.5deg);z-index:3;box-shadow:var(--shadow-hover)}
 .hero-card.is-back{right:0;transform:translateY(-46%) rotate(4deg) scale(.96);z-index:2;box-shadow:0 14px 30px rgba(30,111,208,.16)}
 .hero-card.is-back .cap{left:auto;right:14px}
-.hero-stack:hover .hero-card.is-back{transform:translateY(-46%) translateX(10px) rotate(5deg) scale(.97)}
+.hero-card.is-front:hover{transform:translateY(-50%) rotate(-2.5deg) scale(1.02)}
+.hero-card.is-back:hover{transform:translateY(-46%) translateX(10px) rotate(4deg) scale(.99)}
+/* кнопка-стрелка переключения */
+.hero-arrow{
+  position:absolute;right:8px;bottom:6px;z-index:6;
+  width:54px;height:54px;border-radius:50%;border:3px solid #fff;cursor:pointer;
+  background:linear-gradient(135deg,var(--blue),var(--teal));color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 10px 24px rgba(18,181,176,.35);
+  transition:transform .18s ease,box-shadow .18s ease;
+}
+.hero-arrow:hover{transform:scale(1.1)}
+.hero-arrow:active{transform:scale(.96)}
+.hero-arrow svg{width:26px;height:26px}
 .hero-hint{
   display:inline-flex;align-items:center;gap:8px;margin-top:14px;
-  color:var(--blue);font-size:.95rem;font-weight:700;
+  color:var(--muted);font-size:.92rem;font-weight:600;
 }
-.hero-hint svg{width:19px;height:19px}
+.hero-hint svg{width:18px;height:18px}
 
 /* Trust bar */
 .trust{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
@@ -399,19 +413,22 @@ section[id],a[id]{scroll-margin-top:88px}
       <a href="#apparaty" class="btn">Выбрать аппарат</a>
     </div>
     <div class="hero-text-media">
-      <div class="hero-stack" id="heroStack" onclick="swapHero()" title="Нажмите, чтобы поменять аппараты местами">
-        <div class="hero-card is-front" data-i="0">
+      <div class="hero-stack" id="heroStack">
+        <a class="hero-card is-front" href="#artro" title="Подробнее о НейроДЭНС·Артро">
           <span class="cap">Для коленного сустава</span>
           <img src="artro.jpg?v=3" alt="Медицинский аппарат НейроДЭНС·Артро для коленного сустава" width="1000" height="1250" fetchpriority="high">
-        </div>
-        <div class="hero-card is-back" data-i="1">
+        </a>
+        <a class="hero-card is-back" href="#vertebra" title="Подробнее о НейроДЭНС·Вертебра">
           <span class="cap">Для спины и позвоночника</span>
           <img src="vertebra.jpg?v=2" alt="Медицинский аппарат НейроДЭНС·Вертебра для спины" width="1000" height="1250">
-        </div>
+        </a>
+        <button class="hero-arrow" type="button" onclick="swapHero(event)" aria-label="Показать другой аппарат">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
+        </button>
       </div>
       <span class="hero-hint">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h11v11H4z"/><path d="M9 9h11v11H9z"/></svg>
-        Два аппарата — нажмите, чтобы переключить
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
+        Нажмите на стрелку, чтобы переключить аппарат
       </span>
     </div>
   </div>
@@ -728,8 +745,9 @@ section[id],a[id]{scroll-margin-top:88px}
 </div>
 
 <script>
-// Заглавная стопка: две карточки меняются местами по клику
-function swapHero(){
+// Заглавная стопка: стрелка меняет карточки местами (клик по карточке ведёт в раздел аппарата)
+function swapHero(e){
+  if(e){ e.preventDefault(); e.stopPropagation(); }
   var cards=document.querySelectorAll('#heroStack .hero-card');
   cards.forEach(function(c){
     c.classList.toggle('is-front');
