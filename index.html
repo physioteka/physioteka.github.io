@@ -322,6 +322,10 @@ section[id],a[id]{scroll-margin-top:88px}
 .modal .modal-note{font-size:.8rem;color:var(--muted);line-height:1.5;margin:4px 0 0}
 .modal .modal-error{color:#d9534f;font-size:.85rem;font-weight:600;margin:0;display:none}
 .modal .modal-error.show{display:block}
+.consent-checkbox{flex-direction:row!important;align-items:flex-start;gap:10px;font-size:.85rem;font-weight:400;color:var(--muted);line-height:1.5;cursor:pointer}
+.consent-checkbox input{width:20px;height:20px;flex:0 0 auto;margin-top:1px;accent-color:var(--blue);cursor:pointer}
+.modal .modal-btn:disabled{opacity:.5;cursor:not-allowed;filter:grayscale(.3)}
+.modal .modal-btn:disabled:hover{transform:none;box-shadow:0 8px 20px rgba(18,181,176,.25)}
 
 /* Cookie banner */
 .cookie{
@@ -441,7 +445,7 @@ section[id],a[id]{scroll-margin-top:88px}
         { "@type": "Question", "name": "Как часто применять?", "acceptedAnswer": { "@type": "Answer", "text": "Обычно курс из 10–15 процедур по 20–30 минут, 1–2 раза в день. Точный режим — в инструкции." } },
         { "@type": "Question", "name": "Есть противопоказания?", "acceptedAnswer": { "@type": "Answer", "text": "Да. Не рекомендуется при кардиостимуляторе, онкологических заболеваниях, беременности, эпилепсии и острых воспалениях. Перед применением проконсультируйтесь со специалистом." } },
         { "@type": "Question", "name": "Можно вместе с лекарствами и физиопроцедурами?", "acceptedAnswer": { "@type": "Answer", "text": "Как правило, да, аппарат применяют в комплексе. Уточните у врача." } },
-        { "@type": "Question", "name": "Есть гарантия?", "acceptedAnswer": { "@type": "Answer", "text": "Да, 1 год плюс сервисная поддержка." } }
+        { "@type": "Question", "name": "Есть гарантия?", "acceptedAnswer": { "@type": "Answer", "text": "Да, 1 год." } }
       ]
     }
   ]
@@ -632,7 +636,7 @@ section[id],a[id]{scroll-margin-top:88px}
           <tr><th>Регистрация</th><td>Медицинское изделие, <a href="ru-artro.pdf" target="_blank" rel="noopener">РЗН 2023/19433</a> (бессрочно)</td></tr>
           <tr><th>Гарантия</th><td>12 месяцев</td></tr>
         </table>
-        <p class="kit"><b>В комплекте:</b> аппарат, манжета для колена, кабель USB, зарядное устройство, руководство по эксплуатации, гарантийный талон.</p>
+        <p class="kit"><b>В комплекте:</b> аппарат, манжета для колена, кабель USB, зарядное устройство, руководство по эксплуатации, гарантийный талон.<br><a href="instrukciya-artro.pdf" target="_blank" rel="noopener">📄 Инструкция по эксплуатации (PDF)</a></p>
         <div class="price">
           <span class="val">18&nbsp;900&nbsp;₽</span>
         </div>
@@ -677,7 +681,7 @@ section[id],a[id]{scroll-margin-top:88px}
           <tr><th>Регистрация</th><td>Медицинское изделие, <a href="ru-vertebra.pdf" target="_blank" rel="noopener">ФСР 2010/08179</a> (бессрочно)</td></tr>
           <tr><th>Гарантия</th><td>12 месяцев</td></tr>
         </table>
-        <p class="kit"><b>В комплекте:</b> аппарат, пульт управления, электродная панель, сетевой адаптер, руководство по эксплуатации, гарантийный талон.</p>
+        <p class="kit"><b>В комплекте:</b> аппарат, пульт управления, электродная панель, сетевой адаптер, руководство по эксплуатации, гарантийный талон.<br><a href="instrukciya-vertebra.pdf" target="_blank" rel="noopener">📄 Инструкция по эксплуатации (PDF)</a></p>
         <div class="price">
           <span class="val">85&nbsp;000&nbsp;₽</span>
         </div>
@@ -749,7 +753,7 @@ section[id],a[id]{scroll-margin-top:88px}
       </details>
       <details>
         <summary>Есть гарантия?</summary>
-        <div class="answer">Да, 1 год плюс сервисная поддержка.</div>
+        <div class="answer">Да, 1 год.</div>
       </details>
     </div>
   </div>
@@ -778,6 +782,11 @@ section[id],a[id]{scroll-margin-top:88px}
         </div>
       </a>
     </div>
+    <p style="text-align:center;margin:2em auto 0;font-weight:600">
+      Инструкции по эксплуатации:
+      <a href="instrukciya-artro.pdf" target="_blank" rel="noopener">Артро (PDF)</a> ·
+      <a href="instrukciya-vertebra.pdf" target="_blank" rel="noopener">Вертебра (PDF)</a>
+    </p>
   </div>
 </section>
 
@@ -792,6 +801,7 @@ section[id],a[id]{scroll-margin-top:88px}
           <a href="#dokumenty">Документы и сертификаты</a>
           <a href="oferta.html">Оферта</a>
           <a href="politika.html">Политика конфиденциальности</a>
+          <a href="#" onclick="openCookie(event)">Настройки cookies</a>
         </div>
       </div>
       <div>
@@ -833,8 +843,12 @@ section[id],a[id]{scroll-margin-top:88px}
         <input name="email" type="email" autocomplete="email" required placeholder="you@example.ru">
       </label>
       <p class="modal-error" id="orderError">Заполните все обязательные поля правильно.</p>
-      <button type="submit" class="btn modal-btn" id="orderSubmit">Перейти к оплате</button>
-      <p class="modal-note">Нажимая «Перейти к оплате», вы соглашаетесь с <a href="oferta.html" target="_blank">офертой</a> и <a href="politika.html" target="_blank">политикой конфиденциальности</a>. Доставка оплачивается при получении за счёт получателя.</p>
+      <label class="consent-checkbox">
+        <input type="checkbox" id="pd-consent" required>
+        <span>Я даю согласие на обработку персональных данных в соответствии с <a href="politika.html" target="_blank">Политикой конфиденциальности</a> и подтверждаю, что ознакомлен(а) с противопоказаниями к применению Товара.</span>
+      </label>
+      <button type="submit" class="btn modal-btn" id="orderSubmit" disabled>Перейти к оплате</button>
+      <p class="modal-note">Нажимая «Перейти к оплате», вы соглашаетесь с <a href="oferta.html" target="_blank">офертой</a>. Доставка оплачивается при получении за счёт получателя.</p>
     </form>
   </div>
 </div>
@@ -864,14 +878,21 @@ var orderModal = document.getElementById('orderModal');
 var orderForm  = document.getElementById('orderForm');
 var orderErr   = document.getElementById('orderError');
 
+var pdConsent = document.getElementById('pd-consent');
+var orderSubmitBtn = document.getElementById('orderSubmit');
+// Кнопка «Перейти к оплате» активна только при отмеченном согласии
+pdConsent.addEventListener('change', function(){ orderSubmitBtn.disabled = !pdConsent.checked; });
+
 function openOrder(key){
   currentProduct = key;
   var p = PRODUCTS[key];
   document.getElementById('orderProduct').innerHTML = 'Товар: <b>'+p.name+'</b> — '+p.price;
   orderErr.classList.remove('show');
+  pdConsent.checked = false;           // сбросить согласие
+  orderSubmitBtn.disabled = true;      // и заблокировать кнопку
   orderModal.classList.add('open');
   document.body.style.overflow = 'hidden';
-  setTimeout(function(){ var f=orderForm.querySelector('input'); if(f) f.focus(); }, 50);
+  setTimeout(function(){ var f=orderForm.querySelector('input[type="text"]'); if(f) f.focus(); }, 50);
 }
 function closeOrder(){
   orderModal.classList.remove('open');
@@ -910,8 +931,9 @@ orderForm.addEventListener('submit', function(e){
       alert('Заявка принята! Мы свяжемся с вами для подтверждения заказа и оплаты.');
       closeOrder();
     }
-    submitBtn.disabled = false; submitBtn.textContent = 'Перейти к оплате';
+    submitBtn.textContent = 'Перейти к оплате';
     orderForm.reset();
+    submitBtn.disabled = true; // согласие сброшено — снова блокируем кнопку
   }
 
   if(WEB3FORMS_KEY){
@@ -955,6 +977,7 @@ nav.addEventListener('click',function(e){if(e.target.tagName==='A')nav.classList
 var cookieChoice=null; // 'all' | 'necessary'
 var cookie=document.getElementById('cookie');
 function closeCookie(choice){ cookieChoice=choice; cookie.classList.add('hidden'); }
+function openCookie(e){ if(e){ e.preventDefault(); } cookie.classList.remove('hidden'); }
 document.getElementById('cookie-accept').addEventListener('click',function(){ closeCookie('all'); });
 document.getElementById('cookie-necessary').addEventListener('click',function(){ closeCookie('necessary'); });
 </script>
