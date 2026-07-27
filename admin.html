@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Управление наличием — Физиотека</title>
+<meta name="robots" content="noindex,nofollow">
+<style>
+:root{--blue:#1e6fd0;--teal:#12b5b0;--ink:#1c2733;--muted:#5b6b7a;--line:#e4e9ef;--bg:#f5f8fb;--white:#fff;--radius:16px;--shadow:0 10px 30px rgba(30,111,208,.10)}
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;color:var(--ink);background:var(--bg);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;min-height:100vh;display:flex;flex-direction:column}
+h1{font-size:1.7rem;font-weight:800;letter-spacing:-.02em;margin:0 0 .3em}
+h2{font-size:1.1rem;font-weight:700;margin:0 0 .8em;color:var(--muted)}
+p{margin:0 0 .8em}
+a{color:var(--blue)}
+.header{background:#fff;border-bottom:1px solid var(--line);padding:0 24px;height:60px;display:flex;align-items:center;gap:12px}
+.logo{font-weight:800;font-size:1.15rem;color:var(--ink);text-decoration:none;display:flex;align-items:center;gap:8px}
+.logo .mark{width:26px;height:26px;border-radius:8px;background:linear-gradient(135deg,var(--blue),var(--teal));display:inline-block;position:relative;flex:0 0 auto}
+.logo .mark::after{content:"";position:absolute;inset:7px;border-radius:2px;background:#fff;opacity:.9}
+.badge{background:#e8f0fe;color:var(--blue);font-size:.75rem;font-weight:700;padding:2px 8px;border-radius:5px;letter-spacing:.03em}
+main{flex:1;display:flex;align-items:flex-start;justify-content:center;padding:40px 20px}
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:36px 40px;width:100%;max-width:480px}
+label{display:block;font-weight:600;margin-bottom:6px;font-size:.95rem}
+input[type="password"],input[type="text"]{width:100%;border:1.5px solid var(--line);border-radius:10px;padding:11px 14px;font-size:1rem;color:var(--ink);outline:none;transition:border-color .15s}
+input[type="password"]:focus,input[type="text"]:focus{border-color:var(--blue)}
+.btn{display:inline-flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--blue),var(--teal));color:#fff;border:none;border-radius:10px;padding:12px 28px;font-size:1rem;font-weight:700;cursor:pointer;width:100%;margin-top:6px;transition:opacity .15s}
+.btn:hover{opacity:.88}
+.btn.secondary{background:#f0f4f8;color:var(--ink);font-weight:600}
+.btn.secondary:hover{background:#e4eaf0}
+.error{color:#e53935;font-size:.9rem;margin-top:8px;min-height:1.3em}
+.success{color:#2e7d32;font-size:.9rem;margin-top:8px;min-height:1.3em}
+
+/* Продукты */
+.product-list{margin:24px 0 0}
+.product-row{display:flex;align-items:center;gap:0;border:1.5px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:12px;background:#fafcff}
+.product-info{flex:1;min-width:0}
+.product-name{font-weight:700;font-size:1rem}
+.product-status{font-size:.85rem;margin-top:2px}
+.product-status.in-stock{color:#2e7d32}
+.product-status.out-stock{color:#e53935;font-weight:600}
+.qty-controls{display:flex;align-items:center;gap:0;flex-shrink:0}
+.qty-btn{width:36px;height:36px;border:1.5px solid var(--line);background:#fff;border-radius:8px;font-size:1.3rem;font-weight:700;cursor:pointer;color:var(--ink);display:flex;align-items:center;justify-content:center;transition:all .15s;line-height:1}
+.qty-btn:hover{border-color:var(--blue);color:var(--blue)}
+.qty-val{width:52px;text-align:center;font-size:1.25rem;font-weight:800;color:var(--ink)}
+
+/* Токен */
+.token-section{border:1.5px solid var(--line);border-radius:12px;padding:18px;margin-top:20px;background:#fffdf5}
+.token-section h3{font-size:.95rem;font-weight:700;margin:0 0 6px;color:#7a5a00}
+.token-section p{font-size:.85rem;color:#7a5a00;margin-bottom:10px}
+.token-row{display:flex;gap:8px}
+.token-row input{flex:1}
+.token-row .btn{width:auto;padding:11px 16px;margin-top:0;font-size:.9rem}
+.token-ok{color:#2e7d32;font-size:.85rem;margin-top:6px}
+
+/* Статус */
+.save-row{margin-top:20px}
+.spinner{display:inline-block;width:16px;height:16px;border:2.5px solid rgba(255,255,255,.4);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite;vertical-align:middle;margin-right:6px}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+@media(max-width:540px){
+  .card{padding:24px 20px}
+  .product-row{flex-direction:column;align-items:flex-start;gap:10px}
+}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <a href="index.html" class="logo"><span class="mark"></span>Физиотека</a>
+  <span class="badge">Управление</span>
+</header>
+
+<main>
+
+<!-- Экран входа -->
+<div class="card" id="loginCard">
+  <h1>Вход</h1>
+  <h2>Управление наличием товаров</h2>
+  <label for="passInput">Пароль</label>
+  <input type="password" id="passInput" placeholder="••••••••" autocomplete="current-password">
+  <div class="error" id="loginError"></div>
+  <button class="btn" onclick="doLogin()">Войти</button>
+</div>
+
+<!-- Экран управления -->
+<div class="card" id="adminCard" style="display:none">
+  <h1>Наличие товаров</h1>
+  <p style="color:var(--muted);font-size:.9rem">Изменения сохраняются на сайте через GitHub. Обновление занимает 1–2 минуты.</p>
+
+  <div class="product-list" id="productList">
+    <!-- Вертится пока грузится -->
+    <p style="color:var(--muted)">Загрузка...</p>
+  </div>
+
+  <!-- Секция токена -->
+  <div class="token-section" id="tokenSection">
+    <h3>GitHub токен</h3>
+    <p>Нужен один раз для сохранения изменений на сайте. Сохраняется только в этом браузере.</p>
+    <div class="token-row">
+      <input type="text" id="tokenInput" placeholder="ghp_..." autocomplete="off" spellcheck="false">
+      <button class="btn" onclick="saveToken()">Сохранить</button>
+    </div>
+    <div class="token-ok" id="tokenOk" style="display:none">Токен сохранён</div>
+  </div>
+
+  <div class="save-row">
+    <button class="btn" id="saveBtn" onclick="saveStock()">Сохранить на сайте</button>
+    <div class="error" id="saveError"></div>
+    <div class="success" id="saveOk"></div>
+  </div>
+
+  <div style="margin-top:16px;text-align:center">
+    <button class="btn secondary" onclick="doLogout()">Выйти</button>
+  </div>
+</div>
+
+</main>
+
+<script>
+var PASS_HASH = '63d00ba76d8d018945829af85fc49c5ff8dc2661ef9e0deacb77f961e9cf25a9';
+var OWNER = 'physioteka';
+var REPO  = 'physioteka.github.io';
+var FILE  = 'stock.json';
+
+var PRODUCTS = {
+  artro:    'НейроДЭНС·Артро',
+  vertebra: 'НейроДЭНС·Вертебра'
+};
+
+var currentStock = { artro: 0, vertebra: 0 };
+var fileSha = '';
+
+/* ---- Утилиты ---- */
+async function sha256(str){
+  var buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+  return Array.from(new Uint8Array(buf)).map(function(b){ return b.toString(16).padStart(2,'0'); }).join('');
+}
+
+function getToken(){ return localStorage.getItem('physio_gh_token') || ''; }
+
+function saveToken(){
+  var t = document.getElementById('tokenInput').value.trim();
+  if(!t){ return; }
+  localStorage.setItem('physio_gh_token', t);
+  document.getElementById('tokenInput').value = '';
+  showTokenOk();
+}
+
+function showTokenOk(){
+  var sec = document.getElementById('tokenSection');
+  var ok  = document.getElementById('tokenOk');
+  ok.style.display = 'block';
+  if(getToken()){
+    sec.style.borderColor = '#a5d6a7';
+    sec.style.background  = '#f1faf2';
+  }
+}
+
+/* ---- Авторизация ---- */
+async function doLogin(){
+  var pw = document.getElementById('passInput').value;
+  var h  = await sha256(pw);
+  if(h === PASS_HASH){
+    document.getElementById('loginCard').style.display  = 'none';
+    document.getElementById('adminCard').style.display  = '';
+    sessionStorage.setItem('physio_auth','1');
+    initAdmin();
+  } else {
+    document.getElementById('loginError').textContent = 'Неверный пароль';
+  }
+}
+
+function doLogout(){
+  sessionStorage.removeItem('physio_auth');
+  document.getElementById('loginCard').style.display  = '';
+  document.getElementById('adminCard').style.display  = 'none';
+  document.getElementById('passInput').value = '';
+}
+
+document.getElementById('passInput').addEventListener('keydown', function(e){
+  if(e.key === 'Enter') doLogin();
+});
+
+/* ---- Загрузка stock.json ---- */
+async function fetchStock(){
+  var token = getToken();
+  var headers = { 'Accept': 'application/vnd.github+json' };
+  if(token) headers['Authorization'] = 'Bearer ' + token;
+
+  var r = await fetch(
+    'https://api.github.com/repos/'+OWNER+'/'+REPO+'/contents/'+FILE,
+    { headers: headers }
+  );
+  if(!r.ok) throw new Error('HTTP '+r.status);
+  var data = await r.json();
+  fileSha = data.sha;
+  var json = JSON.parse(atob(data.content.replace(/\n/g,'')));
+  return json;
+}
+
+/* ---- Рендер продуктов ---- */
+function renderProducts(){
+  var list = document.getElementById('productList');
+  list.innerHTML = '';
+  Object.keys(PRODUCTS).forEach(function(key){
+    var qty = currentStock[key] || 0;
+    var inStock = qty > 0;
+    var row = document.createElement('div');
+    row.className = 'product-row';
+    row.innerHTML =
+      '<div class="product-info">' +
+        '<div class="product-name">'+PRODUCTS[key]+'</div>' +
+        '<div class="product-status '+(inStock?'in-stock':'out-stock')+'" id="status-'+key+'">' +
+          (inStock ? 'В наличии: '+qty+' шт.' : 'Нет в наличии') +
+        '</div>' +
+      '</div>' +
+      '<div class="qty-controls">' +
+        '<button class="qty-btn" onclick="changeQty(\''+key+'\',-1)">−</button>' +
+        '<span class="qty-val" id="qty-'+key+'">'+qty+'</span>' +
+        '<button class="qty-btn" onclick="changeQty(\''+key+'\',+1)">+</button>' +
+      '</div>';
+    list.appendChild(row);
+  });
+}
+
+function changeQty(key, delta){
+  var newVal = Math.max(0, (currentStock[key] || 0) + delta);
+  currentStock[key] = newVal;
+  document.getElementById('qty-'+key).textContent = newVal;
+  var st = document.getElementById('status-'+key);
+  if(newVal > 0){
+    st.className = 'product-status in-stock';
+    st.textContent = 'В наличии: '+newVal+' шт.';
+  } else {
+    st.className = 'product-status out-stock';
+    st.textContent = 'Нет в наличии';
+  }
+  document.getElementById('saveOk').textContent = '';
+  document.getElementById('saveError').textContent = '';
+}
+
+/* ---- Инициализация ---- */
+async function initAdmin(){
+  if(getToken()){
+    showTokenOk();
+  }
+  try {
+    currentStock = await fetchStock();
+    renderProducts();
+  } catch(e){
+    document.getElementById('productList').innerHTML =
+      '<p class="error">Не удалось загрузить данные. Проверьте токен и соединение.</p>';
+  }
+}
+
+/* ---- Сохранение ---- */
+async function saveStock(){
+  document.getElementById('saveError').textContent = '';
+  document.getElementById('saveOk').textContent = '';
+  var token = getToken();
+  if(!token){
+    document.getElementById('saveError').textContent = 'Введите GitHub-токен ниже.';
+    return;
+  }
+  var btn = document.getElementById('saveBtn');
+  btn.innerHTML = '<span class="spinner"></span>Сохранение...';
+  btn.disabled = true;
+  try {
+    var content = btoa(JSON.stringify(currentStock)+'\n');
+    var body = {
+      message: 'update stock',
+      content: content,
+      sha: fileSha
+    };
+    var r = await fetch(
+      'https://api.github.com/repos/'+OWNER+'/'+REPO+'/contents/'+FILE,
+      {
+        method: 'PUT',
+        headers: {
+          'Authorization': 'Bearer '+token,
+          'Accept': 'application/vnd.github+json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(body)
+      }
+    );
+    if(!r.ok){
+      var err = await r.json().catch(function(){ return {}; });
+      throw new Error(err.message || 'HTTP '+r.status);
+    }
+    var data = await r.json();
+    fileSha = data.content.sha;
+    document.getElementById('saveOk').textContent = 'Сохранено! Сайт обновится через 1–2 минуты.';
+  } catch(e){
+    document.getElementById('saveError').textContent = 'Ошибка: '+e.message;
+  } finally {
+    btn.innerHTML = 'Сохранить на сайте';
+    btn.disabled = false;
+  }
+}
+
+/* ---- Автовход если сессия активна ---- */
+if(sessionStorage.getItem('physio_auth') === '1'){
+  document.getElementById('loginCard').style.display  = 'none';
+  document.getElementById('adminCard').style.display  = '';
+  initAdmin();
+}
+</script>
+</body>
+</html>

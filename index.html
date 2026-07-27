@@ -209,6 +209,9 @@ section[id],a[id]{scroll-margin-top:88px}
 .price .val{font-size:1.6rem;font-weight:800;color:var(--ink)}
 .price .old{font-size:1.05rem;font-weight:600;color:#9fb0be;text-decoration:line-through}
 .price .todo{font-size:1.15rem;font-weight:700;color:var(--muted)}
+/* Наличие */
+.btn[disabled].out-of-stock{background:#b0bec5;cursor:not-allowed;box-shadow:none;transform:none}
+.stock-badge{display:inline-block;background:#e53935;color:#fff;font-size:.75rem;font-weight:700;padding:3px 9px;border-radius:6px;letter-spacing:.04em;text-transform:uppercase;vertical-align:middle;margin-left:10px}
 
 /* Детальные секции аппаратов */
 .detail{padding:66px 0;border-top:1px solid var(--line)}
@@ -406,7 +409,7 @@ section[id],a[id]{scroll-margin-top:88px}
       "url": "https://physioteka.ru/#artro",
       "offers": {
         "@type": "Offer",
-        "price": "18900",
+        "price": "27000",
         "priceCurrency": "RUB",
         "availability": "https://schema.org/InStock",
         "url": "https://physioteka.ru/#artro",
@@ -427,7 +430,7 @@ section[id],a[id]{scroll-margin-top:88px}
       "url": "https://physioteka.ru/#vertebra",
       "offers": {
         "@type": "Offer",
-        "price": "85000",
+        "price": "99000",
         "priceCurrency": "RUB",
         "availability": "https://schema.org/InStock",
         "url": "https://physioteka.ru/#vertebra",
@@ -556,14 +559,14 @@ section[id],a[id]{scroll-margin-top:88px}
           </div>
           <p class="specs">Медицинское изделие · РЗН 2023/19433 · регистрация бессрочно · гарантия 1 год</p>
           <div class="price">
-            <span class="val">18&nbsp;900&nbsp;₽</span>
+            <span class="val">27&nbsp;000&nbsp;₽</span>
           </div>
           <div class="med-warning">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
             <span>Имеются противопоказания. Необходима консультация специалиста и ознакомление с инструкцией по применению.</span>
           </div>
           <div class="card-actions">
-            <button type="button" class="btn" onclick="openOrder('artro')">Купить</button>
+            <button type="button" class="btn" data-product="artro" onclick="openOrder('artro')">Купить</button>
             <a href="#artro" class="card-link">Подробнее и фото →</a>
           </div>
           <p class="consent">Нажимая «Купить», вы соглашаетесь с <a href="oferta.html">офертой</a> и <a href="politika.html">политикой конфиденциальности</a>.</p>
@@ -590,14 +593,14 @@ section[id],a[id]{scroll-margin-top:88px}
           </div>
           <p class="specs">Медицинское изделие · ФСР 2010/08179 · регистрация бессрочно · гарантия 1 год</p>
           <div class="price">
-            <span class="val">85&nbsp;000&nbsp;₽</span>
+            <span class="val">99&nbsp;000&nbsp;₽</span>
           </div>
           <div class="med-warning">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
             <span>Имеются противопоказания. Необходима консультация специалиста и ознакомление с инструкцией по применению.</span>
           </div>
           <div class="card-actions">
-            <button type="button" class="btn" onclick="openOrder('vertebra')">Купить</button>
+            <button type="button" class="btn" data-product="vertebra" onclick="openOrder('vertebra')">Купить</button>
             <a href="#vertebra" class="card-link">Подробнее и фото →</a>
           </div>
           <p class="consent">Нажимая «Купить», вы соглашаетесь с <a href="oferta.html">офертой</a> и <a href="politika.html">политикой конфиденциальности</a>.</p>
@@ -638,14 +641,14 @@ section[id],a[id]{scroll-margin-top:88px}
         </table>
         <p class="kit"><b>В комплекте:</b> аппарат, манжета для колена, кабель USB, зарядное устройство, руководство по эксплуатации, гарантийный талон.<br><a href="instrukciya-artro.pdf" target="_blank" rel="noopener">📄 Инструкция по эксплуатации (PDF)</a></p>
         <div class="price">
-          <span class="val">18&nbsp;900&nbsp;₽</span>
+          <span class="val">27&nbsp;000&nbsp;₽</span>
         </div>
         <div class="med-warning">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
           <span>Имеются противопоказания. Необходима консультация специалиста и ознакомление с инструкцией по применению.</span>
         </div>
         <div class="card-actions">
-          <button type="button" class="btn" onclick="openOrder('artro')">Купить</button>
+          <button type="button" class="btn" data-product="artro" onclick="openOrder('artro')">Купить</button>
           <a href="#apparaty" class="card-link">← Все аппараты</a>
         </div>
         <p class="consent">Нажимая «Купить», вы соглашаетесь с <a href="oferta.html">офертой</a> и <a href="politika.html">политикой конфиденциальности</a>.</p>
@@ -683,14 +686,14 @@ section[id],a[id]{scroll-margin-top:88px}
         </table>
         <p class="kit"><b>В комплекте:</b> аппарат, пульт управления, электродная панель, сетевой адаптер, руководство по эксплуатации, гарантийный талон.<br><a href="instrukciya-vertebra.pdf" target="_blank" rel="noopener">📄 Инструкция по эксплуатации (PDF)</a></p>
         <div class="price">
-          <span class="val">85&nbsp;000&nbsp;₽</span>
+          <span class="val">99&nbsp;000&nbsp;₽</span>
         </div>
         <div class="med-warning">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
           <span>Имеются противопоказания. Необходима консультация специалиста и ознакомление с инструкцией по применению.</span>
         </div>
         <div class="card-actions">
-          <button type="button" class="btn" onclick="openOrder('vertebra')">Купить</button>
+          <button type="button" class="btn" data-product="vertebra" onclick="openOrder('vertebra')">Купить</button>
           <a href="#apparaty" class="card-link">← Все аппараты</a>
         </div>
         <p class="consent">Нажимая «Купить», вы соглашаетесь с <a href="oferta.html">офертой</a> и <a href="politika.html">политикой конфиденциальности</a>.</p>
@@ -866,8 +869,8 @@ section[id],a[id]{scroll-margin-top:88px}
 // ==== ОФОРМЛЕНИЕ ЗАКАЗА ====
 // 1) Данные товаров. pay — платёжная ссылка Робокассы (вставьте, когда будет готова).
 var PRODUCTS = {
-  artro:    { name: 'НейроДЭНС·Артро',    price: '18 900 ₽', pay: '' /* ← ссылка Робокассы для Артро */ },
-  vertebra: { name: 'НейроДЭНС·Вертебра', price: '85 000 ₽', pay: '' /* ← ссылка Робокассы для Вертебры */ }
+  artro:    { name: 'НейроДЭНС·Артро',    price: '27 000 ₽', pay: '' /* ← ссылка Робокассы для Артро */ },
+  vertebra: { name: 'НейроДЭНС·Вертебра', price: '99 000 ₽', pay: '' /* ← ссылка Робокассы для Вертебры */ }
 };
 // 2) Ключ Web3Forms — чтобы анкета приходила на signum.treyd@yandex.ru.
 //    Получите бесплатно на web3forms.com (введите почту), вставьте ключ сюда:
@@ -980,6 +983,37 @@ function closeCookie(choice){ cookieChoice=choice; cookie.classList.add('hidden'
 function openCookie(e){ if(e){ e.preventDefault(); } cookie.classList.remove('hidden'); }
 document.getElementById('cookie-accept').addEventListener('click',function(){ closeCookie('all'); });
 document.getElementById('cookie-necessary').addEventListener('click',function(){ closeCookie('necessary'); });
+
+// Наличие товаров
+function applyStock(stock){
+  Object.keys(stock).forEach(function(key){
+    var qty=stock[key];
+    var btns=document.querySelectorAll('[data-product="'+key+'"]');
+    btns.forEach(function(btn){
+      if(qty<=0){
+        btn.textContent='Нет в наличии';
+        btn.classList.add('out-of-stock');
+        btn.disabled=true;
+        btn.onclick=null;
+      }
+    });
+    if(qty<=0){
+      var priceBlocks=document.querySelectorAll('#'+key+' .price, #apparaty [href="#'+key+'"]~* .price');
+      priceBlocks.forEach(function(p){
+        if(!p.querySelector('.stock-badge')){
+          var b=document.createElement('span');
+          b.className='stock-badge';
+          b.textContent='Нет в наличии';
+          p.appendChild(b);
+        }
+      });
+    }
+  });
+}
+fetch('/stock.json?v='+Date.now())
+  .then(function(r){return r.ok?r.json():null})
+  .then(function(s){if(s)applyStock(s);})
+  .catch(function(){});
 </script>
 
 </body>
