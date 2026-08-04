@@ -442,6 +442,46 @@ section[id],a[id]{scroll-margin-top:88px}
       ]
     },
     {
+      "@type": "Product",
+      "name": "НейроДЭНС·Кардио",
+      "image": "https://physioteka.ru/kardio.png",
+      "description": "Аппарат электротерапевтический для коррекции артериального давления. Помогает нормализовать АД и улучшить гемодинамику при курсовом применении.",
+      "brand": { "@type": "Brand", "name": "НейроДЭНС" },
+      "category": "Медицинские изделия / Физиотерапевтические аппараты",
+      "url": "https://physioteka.ru/#kardio",
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "RUB",
+        "availability": "https://schema.org/InStock",
+        "url": "https://physioteka.ru/#kardio",
+        "seller": { "@id": "https://physioteka.ru/#org" }
+      },
+      "additionalProperty": [
+        { "@type": "PropertyValue", "name": "Регистрационное удостоверение", "value": "РЗН 2019/8468" },
+        { "@type": "PropertyValue", "name": "Гарантия", "value": "12 месяцев" }
+      ]
+    },
+    {
+      "@type": "Product",
+      "name": "НейроДЭНС·Аксис",
+      "image": "https://physioteka.ru/axis.png",
+      "description": "Электростимулятор для шейно-воротниковой зоны. Помогает снять боль в шее, мышечное напряжение и улучшить подвижность при 5 автоматических программах.",
+      "brand": { "@type": "Brand", "name": "НейроДЭНС" },
+      "category": "Медицинские изделия / Физиотерапевтические аппараты",
+      "url": "https://physioteka.ru/#axis",
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "RUB",
+        "availability": "https://schema.org/InStock",
+        "url": "https://physioteka.ru/#axis",
+        "seller": { "@id": "https://physioteka.ru/#org" }
+      },
+      "additionalProperty": [
+        { "@type": "PropertyValue", "name": "Регистрационное удостоверение", "value": "РЗН 2022/18742" },
+        { "@type": "PropertyValue", "name": "Гарантия", "value": "12 месяцев" }
+      ]
+    },
+    {
       "@type": "FAQPage",
       "mainEntity": [
         { "@type": "Question", "name": "Это больно?", "acceptedAnswer": { "@type": "Answer", "text": "Нет, воздействие мягкое, интенсивность настраивается под ваши ощущения." } },
@@ -482,13 +522,21 @@ section[id],a[id]{scroll-margin-top:88px}
     </div>
     <div class="hero-text-media">
       <div class="hero-stack" id="heroStack">
-        <a class="hero-card is-front" href="#artro" title="Подробнее о НейроДЭНС·Артро">
+        <a class="hero-card is-front" data-hero="artro" href="#artro" title="Подробнее о НейроДЭНС·Артро">
           <span class="cap">Для коленного сустава</span>
           <img src="artro.jpg?v=3" alt="Медицинский аппарат НейроДЭНС·Артро для коленного сустава" width="1000" height="1250" fetchpriority="high">
         </a>
-        <a class="hero-card is-back" href="#vertebra" title="Подробнее о НейроДЭНС·Вертебра">
+        <a class="hero-card is-back" data-hero="vertebra" href="#vertebra" title="Подробнее о НейроДЭНС·Вертебра">
           <span class="cap">Для спины и позвоночника</span>
           <img src="vertebra.jpg?v=2" alt="Медицинский аппарат НейроДЭНС·Вертебра для спины" width="1000" height="1250">
+        </a>
+        <a class="hero-card" data-hero="kardio" href="#kardio" title="Подробнее о НейроДЭНС·Кардио" style="display:none">
+          <span class="cap">Для коррекции давления</span>
+          <img src="kardio.png" alt="Медицинский аппарат НейроДЭНС·Кардио" width="1000" height="1250">
+        </a>
+        <a class="hero-card" data-hero="axis" href="#axis" title="Подробнее о НейроДЭНС·Аксис" style="display:none">
+          <span class="cap">Для шеи и воротниковой зоны</span>
+          <img src="axis.png" alt="Медицинский аппарат НейроДЭНС·Аксис" width="1000" height="1250">
         </a>
         <button class="hero-arrow" type="button" onclick="swapHero(event)" aria-label="Показать другой аппарат">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
@@ -607,6 +655,75 @@ section[id],a[id]{scroll-margin-top:88px}
         </div>
       </article>
 
+
+      <!-- Карточка 3 — Кардио -->
+      <article class="card">
+        <a class="card-photo" href="#kardio">
+          <span class="badge">Для коррекции давления</span>
+          <img loading="lazy" decoding="async" src="kardio.png" alt="НейроДЭНС·Кардио" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <span class="ph" style="display:none;position:absolute;inset:0;align-items:center;justify-content:center">фото аппарата</span>
+        </a>
+        <div class="card-body">
+          <h3>НейроДЭНС<span class="sep">·</span>Кардио</h3>
+          <p class="desc">Аппарат для коррекции артериального давления. Воздействует на биологически активные точки импульсами тока низкой частоты — нормализует сосудистый тонус и улучшает гемодинамику.</p>
+          <div class="chips">
+            <span class="chip">4 программы</span>
+            <span class="chip">Дисплей с иконками</span>
+            <span class="chip">2 батарейки AA</span>
+            <span class="chip">≈ 95 г</span>
+            <span class="chip">Таймер и автоотключение</span>
+            <span class="chip">С 14 лет</span>
+          </div>
+          <p class="specs">Медицинское изделие · РЗН 2019/8468 · регистрация бессрочно · гарантия 1 год</p>
+          <div class="price">
+            <span class="val">—</span>
+          </div>
+          <div class="med-warning">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+            <span>Имеются противопоказания. Необходима консультация специалиста и ознакомление с инструкцией по применению.</span>
+          </div>
+          <div class="card-actions">
+            <button type="button" class="btn" data-product="kardio" onclick="openOrder('kardio')">Купить</button>
+            <a href="#kardio" class="card-link">Подробнее и фото →</a>
+          </div>
+          <p class="consent">Нажимая «Купить», вы соглашаетесь с <a href="oferta.html">офертой</a> и <a href="politika.html">политикой конфиденциальности</a>.</p>
+        </div>
+      </article>
+
+      <!-- Карточка 4 — Аксис -->
+      <article class="card">
+        <a class="card-photo" href="#axis">
+          <span class="badge">Для шеи и воротниковой зоны</span>
+          <img loading="lazy" decoding="async" src="axis.png" alt="НейроДЭНС·Аксис" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <span class="ph" style="display:none;position:absolute;inset:0;align-items:center;justify-content:center">фото аппарата</span>
+        </a>
+        <div class="card-body">
+          <h3>НейроДЭНС<span class="sep">·</span>Аксис</h3>
+          <p class="desc">Электростимулятор для шейно-воротниковой зоны. Снимает боль в шее, мышечное напряжение и ограничение подвижности. 5 автоматических программ, встроенный аккумулятор.</p>
+          <div class="chips">
+            <span class="chip">4 подвижных электрода</span>
+            <span class="chip">5 программ</span>
+            <span class="chip">Аккумулятор Li-Pol</span>
+            <span class="chip">Зарядка USB-C</span>
+            <span class="chip">≈ 280 г</span>
+            <span class="chip">Таймер и автоотключение</span>
+          </div>
+          <p class="specs">Медицинское изделие · РЗН 2022/18742 · регистрация бессрочно · гарантия 1 год</p>
+          <div class="price">
+            <span class="val">—</span>
+          </div>
+          <div class="med-warning">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+            <span>Имеются противопоказания. Необходима консультация специалиста и ознакомление с инструкцией по применению.</span>
+          </div>
+          <div class="card-actions">
+            <button type="button" class="btn" data-product="axis" onclick="openOrder('axis')">Купить</button>
+            <a href="#axis" class="card-link">Подробнее и фото →</a>
+          </div>
+          <p class="consent">Нажимая «Купить», вы соглашаетесь с <a href="oferta.html">офертой</a> и <a href="politika.html">политикой конфиденциальности</a>.</p>
+        </div>
+      </article>
+
     </div>
   </div>
 </section>
@@ -702,6 +819,100 @@ section[id],a[id]{scroll-margin-top:88px}
   </div>
 </section>
 
+<!-- ДЕТАЛЬНАЯ СЕКЦИЯ — Кардио -->
+<section class="section detail" id="kardio">
+  <div class="container">
+    <div class="detail-inner">
+      <div class="gallery">
+        <div class="main"><img loading="lazy" decoding="async" id="kardio-main" src="kardio.png" alt="НейроДЭНС·Кардио"></div>
+        <div class="thumbs">
+          <button class="active" onclick="swap('kardio-main','kardio.png',this)"><img loading="lazy" decoding="async" src="kardio.png" alt="Аппарат Кардио"></button>
+          <button onclick="swap('kardio-main','kardio-2.png',this)"><img loading="lazy" decoding="async" src="kardio-2.png" alt="Кардио — вид сбоку"></button>
+          <button onclick="swap('kardio-main','kardio-3.png',this)"><img loading="lazy" decoding="async" src="kardio-3.png" alt="Кардио — вид с другой стороны"></button>
+          <button onclick="swap('kardio-main','kardio-use.png',this)"><img loading="lazy" decoding="async" src="kardio-use.png" alt="Кардио на запястье"></button>
+          <button onclick="swap('kardio-main','kardio-kit.png',this)"><img loading="lazy" decoding="async" src="kardio-kit.png" alt="Кардио — комплект поставки"></button>
+          <button onclick="swap('kardio-main','kardio-box.png',this)"><img loading="lazy" decoding="async" src="kardio-box.png" alt="Кардио — упаковка"></button>
+        </div>
+      </div>
+      <div>
+        <span class="badge-inline">Для коррекции давления</span>
+        <h2>НейроДЭНС<span class="sep">·</span>Кардио</h2>
+        <p class="lead">Аппарат электротерапевтический для коррекции артериального давления. Воздействует на биологически активные точки импульсами тока низкой частоты — нормализует тонус сосудистой стенки, расширяет капилляры и улучшает гемодинамику в системе микроциркуляции. Применяется как дополнение к медикаментозному лечению, назначенному врачом. Рекомендован с 14 лет.</p>
+        <table class="spec-table">
+          <tr><th>Назначение</th><td>Коррекция артериального давления, нормализация состояния</td></tr>
+          <tr><th>Программы</th><td>4 автоматические (3 фазы каждая)</td></tr>
+          <tr><th>Частоты</th><td>2,5; 3,3; 4,0; 6,2; 8,1; 9,2; 9,4; 10; 20; 77 Гц</td></tr>
+          <tr><th>Управление</th><td>Цветной дисплей, 2 кнопки</td></tr>
+          <tr><th>Питание</th><td>2 батарейки LR6/AA 1,5 В</td></tr>
+          <tr><th>Вес</th><td>≈ 95 г (без батареек)</td></tr>
+          <tr><th>Габариты</th><td>87 × 69 × 32 мм</td></tr>
+          <tr><th>Регистрация</th><td>Медицинское изделие, РЗН 2019/8468 (бессрочно)</td></tr>
+          <tr><th>Гарантия</th><td>12 месяцев</td></tr>
+        </table>
+        <p class="kit"><b>В комплекте:</b> аппарат, 2 батарейки LR6/AA, удлиняющая манжета, руководство по эксплуатации (с гарантийным талоном).</p>
+        <div class="price">
+          <span class="val">—</span>
+        </div>
+        <div class="med-warning">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+          <span>Имеются противопоказания. Необходима консультация специалиста и ознакомление с инструкцией по применению.</span>
+        </div>
+        <div class="card-actions">
+          <button type="button" class="btn" data-product="kardio" onclick="openOrder('kardio')">Купить</button>
+          <a href="#apparaty" class="card-link">← Все аппараты</a>
+        </div>
+        <p class="consent">Нажимая «Купить», вы соглашаетесь с <a href="oferta.html">офертой</a> и <a href="politika.html">политикой конфиденциальности</a>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ДЕТАЛЬНАЯ СЕКЦИЯ — Аксис -->
+<section class="section detail section-tint" id="axis">
+  <div class="container">
+    <div class="detail-inner">
+      <div class="gallery">
+        <div class="main"><img loading="lazy" decoding="async" id="axis-main" src="axis.png" alt="НейроДЭНС·Аксис"></div>
+        <div class="thumbs">
+          <button class="active" onclick="swap('axis-main','axis.png',this)"><img loading="lazy" decoding="async" src="axis.png" alt="Аппарат Аксис"></button>
+          <button onclick="swap('axis-main','axis-2.png',this)"><img loading="lazy" decoding="async" src="axis-2.png" alt="Аксис — вид сбоку"></button>
+          <button onclick="swap('axis-main','axis-box.png',this)"><img loading="lazy" decoding="async" src="axis-box.png" alt="Аксис — упаковка"></button>
+          <button onclick="swap('axis-main','axis-kit.png',this)"><img loading="lazy" decoding="async" src="axis-kit.png" alt="Аксис — комплект"></button>
+          <button onclick="swap('axis-main','axis-use.png',this)"><img loading="lazy" decoding="async" src="axis-use.png" alt="Аксис на шее"></button>
+        </div>
+      </div>
+      <div>
+        <span class="badge-inline">Для шеи и воротниковой зоны</span>
+        <h2>НейроДЭНС<span class="sep">·</span>Аксис</h2>
+        <p class="lead">Электростимулятор чрескожный для шейно-воротниковой зоны. Метод нейроподобной динамической электронейростимуляции воздействует на заднюю поверхность шеи через 4 встроенных электрода. Помогает при боли в шее, мышечном напряжении, ограничении подвижности, головной боли и в реабилитации после травм шеи. Применяется в дополнение к медикаментозному лечению.</p>
+        <table class="spec-table">
+          <tr><th>Назначение</th><td>Электростимуляция шейно-воротниковой зоны</td></tr>
+          <tr><th>Программы</th><td>5 автоматических (боль в шее, напряжение, головная боль, реабилитация, внимание и память)</td></tr>
+          <tr><th>Электроды</th><td>4 встроенных подвижных электрода</td></tr>
+          <tr><th>Питание</th><td>Встроенный аккумулятор Li-Pol, зарядка USB-C</td></tr>
+          <tr><th>Вес</th><td>≈ 280 г</td></tr>
+          <tr><th>Габариты</th><td>190 × 172 × 100 мм</td></tr>
+          <tr><th>Регистрация</th><td>Медицинское изделие, РЗН 2022/18742 (бессрочно)</td></tr>
+          <tr><th>Гарантия</th><td>12 месяцев</td></tr>
+        </table>
+        <p class="kit"><b>В комплекте:</b> аппарат, кабель USB Type-A → Type-C, руководство по эксплуатации.</p>
+        <div class="price">
+          <span class="val">—</span>
+        </div>
+        <div class="med-warning">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+          <span>Имеются противопоказания. Необходима консультация специалиста и ознакомление с инструкцией по применению.</span>
+        </div>
+        <div class="card-actions">
+          <button type="button" class="btn" data-product="axis" onclick="openOrder('axis')">Купить</button>
+          <a href="#apparaty" class="card-link">← Все аппараты</a>
+        </div>
+        <p class="consent">Нажимая «Купить», вы соглашаетесь с <a href="oferta.html">офертой</a> и <a href="politika.html">политикой конфиденциальности</a>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- СЕКЦИЯ 5 — Как это работает -->
 <section class="section section-tint" id="kak-rabotaet">
   <div class="container">
@@ -766,7 +977,7 @@ section[id],a[id]{scroll-margin-top:88px}
 <section class="section" id="dokumenty">
   <div class="container">
     <h2 style="text-align:center;margin-bottom:.35em">Документы</h2>
-    <p style="text-align:center;color:var(--muted);max-width:62ch;margin:0 auto 2em">Оба аппарата — зарегистрированные медицинские изделия. Регистрационные удостоверения Росздравнадзора можно открыть и проверить.</p>
+    <p style="text-align:center;color:var(--muted);max-width:62ch;margin:0 auto 2em">Все аппараты — зарегистрированные медицинские изделия. Регистрационные удостоверения Росздравнадзора можно открыть и проверить.</p>
     <div class="docs">
       <a class="doc-card" href="ru-artro.pdf" target="_blank" rel="noopener">
         <img src="ru-artro-thumb.jpg" alt="Регистрационное удостоверение НейроДЭНС·Артро" loading="lazy">
@@ -869,8 +1080,10 @@ section[id],a[id]{scroll-margin-top:88px}
 // ==== ОФОРМЛЕНИЕ ЗАКАЗА ====
 // 1) Данные товаров. pay — платёжная ссылка Робокассы (вставьте, когда будет готова).
 var PRODUCTS = {
-  artro:    { name: 'НейроДЭНС·Артро',    price: '27 000 ₽', pay: '' /* ← ссылка Робокассы для Артро */ },
-  vertebra: { name: 'НейроДЭНС·Вертебра', price: '99 000 ₽', pay: '' /* ← ссылка Робокассы для Вертебры */ }
+  artro:    { name: 'НейроДЭНС·Артро',    price: '27 000 ₽', pay: '' },
+  vertebra: { name: 'НейроДЭНС·Вертебра', price: '99 000 ₽', pay: '' },
+  kardio:   { name: 'НейроДЭНС·Кардио',   price: '—',        pay: '' },
+  axis:     { name: 'НейроДЭНС·Аксис',    price: '—',        pay: '' }
 };
 // 2) Ключ Web3Forms — чтобы анкета приходила на signum.treyd@yandex.ru.
 //    Получите бесплатно на web3forms.com (введите почту), вставьте ключ сюда:
@@ -953,14 +1166,23 @@ orderForm.addEventListener('submit', function(e){
   }
 });
 
-// Заглавная стопка: стрелка меняет карточки местами (клик по карточке ведёт в раздел аппарата)
+// Заглавная стопка: стрелка циклически переключает 4 карточки
+var heroIdx = 0;
+var heroKeys = ['artro','vertebra','kardio','axis'];
 function swapHero(e){
   if(e){ e.preventDefault(); e.stopPropagation(); }
-  var cards=document.querySelectorAll('#heroStack .hero-card');
+  heroIdx = (heroIdx + 1) % heroKeys.length;
+  var frontKey = heroKeys[heroIdx];
+  var backKey  = heroKeys[(heroIdx + 1) % heroKeys.length];
+  var cards = document.querySelectorAll('#heroStack .hero-card');
   cards.forEach(function(c){
-    c.classList.toggle('is-front');
-    c.classList.toggle('is-back');
+    c.classList.remove('is-front','is-back');
+    c.style.display = 'none';
   });
+  var front = document.querySelector('#heroStack [data-hero="'+frontKey+'"]');
+  var back  = document.querySelector('#heroStack [data-hero="'+backKey+'"]');
+  if(front){ front.style.display=''; front.classList.add('is-front'); }
+  if(back){  back.style.display='';  back.classList.add('is-back');  }
 }
 
 // Галерея аппаратов: переключение главного фото по клику на миниатюру
