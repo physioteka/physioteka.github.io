@@ -1266,13 +1266,25 @@ function roboUrl(key, email){
   if(!p.sum) return '';
   var inv = String((Date.now() % 99999998) + 1);
   var sum = p.sum.toFixed(2);
-  var sig = md5(ROBO_LOGIN+':'+sum+':'+inv+':'+ROBO_PASS1);
+  var receipt = encodeURIComponent(JSON.stringify({
+    sno: 'osn',
+    items: [{
+      name: p.name,
+      quantity: 1,
+      sum: p.sum,
+      tax: 'none',
+      payment_method: 'full_payment',
+      payment_object: 'commodity'
+    }]
+  }));
+  var sig = md5(ROBO_LOGIN+':'+sum+':'+inv+':'+receipt+':'+ROBO_PASS1);
   return 'https://auth.robokassa.ru/Merchant/Index.aspx'
     +'?MerchantLogin='+ROBO_LOGIN
     +'&OutSum='+sum
     +'&InvId='+inv
     +'&Description='+encodeURIComponent(p.name)
     +'&Email='+encodeURIComponent(email||'')
+    +'&Receipt='+receipt
     +'&SignatureValue='+sig
     +(ROBO_IS_TEST?'&IsTest=1':'');
 }
