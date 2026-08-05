@@ -1266,7 +1266,7 @@ function roboUrl(key, email){
   if(!p.sum) return '';
   var inv = String((Date.now() % 99999998) + 1);
   var sum = p.sum.toFixed(2);
-  var receipt = encodeURIComponent(JSON.stringify({
+  var receiptJson = JSON.stringify({
     sno: 'osn',
     items: [{
       name: p.name,
@@ -1276,8 +1276,9 @@ function roboUrl(key, email){
       payment_method: 'full_payment',
       payment_object: 'commodity'
     }]
-  }));
-  var sig = md5(ROBO_LOGIN+':'+sum+':'+inv+':'+receipt+':'+ROBO_PASS1);
+  });
+  var receipt = encodeURIComponent(receiptJson);
+  var sig = md5(ROBO_LOGIN+':'+sum+':'+inv+':'+receiptJson+':'+ROBO_PASS1);
   return 'https://auth.robokassa.ru/Merchant/Index.aspx'
     +'?MerchantLogin='+ROBO_LOGIN
     +'&OutSum='+sum
