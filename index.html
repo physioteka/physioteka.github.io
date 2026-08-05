@@ -554,7 +554,7 @@ section[id],a[id]{scroll-margin-top:88px}
           <span class="cap">Для коррекции давления</span>
           <img src="kardio.png" alt="Медицинский аппарат НейроДЭНС·Кардио" width="1000" height="1250">
         </a>
-        <a class="hero-card" data-hero="axis" href="#axis" title="Подробнее о НейроДЭНС·Аксис" style="display:none">
+        <a class="hero-card" data-hero="axis" href="#axis" title="Подробнее о НейроДЭНС·Аксис" style="display:none" data-hidden="1">
           <span class="cap">Для шеи и воротниковой зоны</span>
           <img src="axis.png" alt="Медицинский аппарат НейроДЭНС·Аксис" width="1000" height="1250">
         </a>
@@ -714,8 +714,8 @@ section[id],a[id]{scroll-margin-top:88px}
         </div>
       </article>
 
-      <!-- Карточка 4 — Аксис -->
-      <article class="card">
+      <!-- Карточка 4 — Аксис (скрыт) -->
+      <article class="card" style="display:none">
         <a class="card-photo" href="#axis">
           <span class="badge">Для шеи и воротниковой зоны</span>
           <img loading="lazy" decoding="async" src="axis.png" alt="НейроДЭНС·Аксис" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
@@ -925,8 +925,8 @@ section[id],a[id]{scroll-margin-top:88px}
   </div>
 </section>
 
-<!-- ДЕТАЛЬНАЯ СЕКЦИЯ — Аксис -->
-<section class="section detail section-tint" id="axis">
+<!-- ДЕТАЛЬНАЯ СЕКЦИЯ — Аксис (скрыт) -->
+<section class="section detail section-tint" id="axis" style="display:none">
   <div class="container">
     <div class="detail-inner">
       <div class="gallery">
@@ -1107,7 +1107,7 @@ section[id],a[id]{scroll-margin-top:88px}
           <span class="doc-open">Открыть PDF →</span>
         </div>
       </a>
-      <a class="doc-card" href="ru-axis.pdf" target="_blank" rel="noopener">
+      <a class="doc-card" href="ru-axis.pdf" target="_blank" rel="noopener" style="display:none">
         <div class="doc-info">
           <b>НейроДЭНС·Аксис</b>
           <span>Рег. удостоверение<br>РЗН 2022/18742</span>
@@ -1127,7 +1127,7 @@ section[id],a[id]{scroll-margin-top:88px}
       <a href="instrukciya-artro.pdf" target="_blank" rel="noopener">Артро (PDF)</a> ·
       <a href="instrukciya-vertebra.pdf" target="_blank" rel="noopener">Вертебра (PDF)</a> ·
       <a href="instrukciya-kardio.pdf" target="_blank" rel="noopener">Кардио (PDF)</a> ·
-      <a href="instrukciya-axis.pdf" target="_blank" rel="noopener">Аксис (PDF)</a> ·
+      <span style="display:none"><a href="instrukciya-axis.pdf" target="_blank" rel="noopener">Аксис (PDF)</a> ·</span>
       <a href="instrukciya-akson.pdf" target="_blank" rel="noopener">Аксон (PDF)</a>
     </p>
   </div>
@@ -1298,7 +1298,7 @@ orderForm.addEventListener('submit', function(e){
 
 // Заглавная стопка: стрелка циклически переключает 4 карточки
 var heroIdx = 0;
-var heroKeys = ['artro','vertebra','kardio','axis','akson'];
+var heroKeys = ['artro','vertebra','kardio','akson'];
 function swapHero(e){
   if(e){ e.preventDefault(); e.stopPropagation(); }
   heroIdx = (heroIdx + 1) % heroKeys.length;
