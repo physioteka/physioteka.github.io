@@ -1278,7 +1278,7 @@ function roboUrl(key, email){
     }]
   });
   var receipt = encodeURIComponent(receiptJson);
-  var sig = md5(ROBO_LOGIN+':'+sum+':'+inv+':'+receipt+':'+ROBO_PASS1);
+  var sig = md5(ROBO_LOGIN+':'+sum+':'+inv+':'+receiptJson+':'+ROBO_PASS1);
   return 'https://auth.robokassa.ru/Merchant/Index.aspx'
     +'?MerchantLogin='+ROBO_LOGIN
     +'&OutSum='+sum
