@@ -463,6 +463,26 @@ section[id],a[id]{scroll-margin-top:88px}
     },
     {
       "@type": "Product",
+      "name": "НейроДЭНС·Аксон",
+      "image": "https://physioteka.ru/akson.png",
+      "description": "Карманный противоболевой электростимулятор. Снимает боль в точке приложения за 15 минут, весит 40 г — умещается в ладони.",
+      "brand": { "@type": "Brand", "name": "НейроДЭНС" },
+      "category": "Медицинские изделия / Физиотерапевтические аппараты",
+      "url": "https://physioteka.ru/#akson",
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "RUB",
+        "availability": "https://schema.org/InStock",
+        "url": "https://physioteka.ru/#akson",
+        "seller": { "@id": "https://physioteka.ru/#org" }
+      },
+      "additionalProperty": [
+        { "@type": "PropertyValue", "name": "Регистрационное удостоверение", "value": "РЗН 2022/18112" },
+        { "@type": "PropertyValue", "name": "Гарантия", "value": "12 месяцев" }
+      ]
+    },
+    {
+      "@type": "Product",
       "name": "НейроДЭНС·Аксис",
       "image": "https://physioteka.ru/axis.png",
       "description": "Электростимулятор для шейно-воротниковой зоны. Помогает снять боль в шее, мышечное напряжение и улучшить подвижность при 5 автоматических программах.",
@@ -537,6 +557,10 @@ section[id],a[id]{scroll-margin-top:88px}
         <a class="hero-card" data-hero="axis" href="#axis" title="Подробнее о НейроДЭНС·Аксис" style="display:none">
           <span class="cap">Для шеи и воротниковой зоны</span>
           <img src="axis.png" alt="Медицинский аппарат НейроДЭНС·Аксис" width="1000" height="1250">
+        </a>
+        <a class="hero-card" data-hero="akson" href="#akson" title="Подробнее о НейроДЭНС·Аксон" style="display:none">
+          <span class="cap">Карманный электростимулятор</span>
+          <img src="akson.png" alt="Медицинский аппарат НейроДЭНС·Аксон" width="1000" height="1250">
         </a>
         <button class="hero-arrow" type="button" onclick="swapHero(event)" aria-label="Показать другой аппарат">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
@@ -719,6 +743,40 @@ section[id],a[id]{scroll-margin-top:88px}
           <div class="card-actions">
             <button type="button" class="btn" data-product="axis" onclick="openOrder('axis')">Купить</button>
             <a href="#axis" class="card-link">Подробнее и фото →</a>
+          </div>
+          <p class="consent">Нажимая «Купить», вы соглашаетесь с <a href="oferta.html">офертой</a> и <a href="politika.html">политикой конфиденциальности</a>.</p>
+        </div>
+      </article>
+
+      <!-- Карточка 5 — Аксон -->
+      <article class="card">
+        <a class="card-photo" href="#akson">
+          <span class="badge">Карманный электростимулятор</span>
+          <img loading="lazy" decoding="async" src="akson.png" alt="НейроДЭНС·Аксон" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <span class="ph" style="display:none;position:absolute;inset:0;align-items:center;justify-content:center">фото аппарата</span>
+        </a>
+        <div class="card-body">
+          <h3>НейроДЭНС<span class="sep">·</span>Аксон</h3>
+          <p class="desc">Карманный противоболевой электростимулятор. Снимает боль в точке приложения за 15 минут — помещается в ладони, весит всего 40 г.</p>
+          <div class="chips">
+            <span class="chip">1 программа</span>
+            <span class="chip">75–135 Гц</span>
+            <span class="chip">Аккумулятор Li-Pol</span>
+            <span class="chip">Зарядка USB-C</span>
+            <span class="chip">40 г</span>
+            <span class="chip">15 мин. сеанс</span>
+          </div>
+          <p class="specs">Медицинское изделие · РЗН 2022/18112 · регистрация бессрочно · гарантия 1 год</p>
+          <div class="price">
+            <span class="val">—</span>
+          </div>
+          <div class="med-warning">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+            <span>Имеются противопоказания. Необходима консультация специалиста и ознакомление с инструкцией по применению.</span>
+          </div>
+          <div class="card-actions">
+            <button type="button" class="btn" data-product="akson" onclick="openOrder('akson')">Купить</button>
+            <a href="#akson" class="card-link">Подробнее и фото →</a>
           </div>
           <p class="consent">Нажимая «Купить», вы соглашаетесь с <a href="oferta.html">офертой</a> и <a href="politika.html">политикой конфиденциальности</a>.</p>
         </div>
@@ -914,6 +972,52 @@ section[id],a[id]{scroll-margin-top:88px}
   </div>
 </section>
 
+<!-- ДЕТАЛЬНАЯ СЕКЦИЯ — Аксон -->
+<section class="section detail" id="akson">
+  <div class="container">
+    <div class="detail-inner">
+      <div class="gallery">
+        <div class="main"><img loading="lazy" decoding="async" id="akson-main" src="akson.png" alt="НейроДЭНС·Аксон"></div>
+        <div class="thumbs">
+          <button class="active" onclick="swap('akson-main','akson.png',this)"><img loading="lazy" decoding="async" src="akson.png" alt="Аппарат Аксон"></button>
+          <button onclick="swap('akson-main','akson-2.png',this)"><img loading="lazy" decoding="async" src="akson-2.png" alt="Аксон — контактная поверхность"></button>
+          <button onclick="swap('akson-main','akson-box.png',this)"><img loading="lazy" decoding="async" src="akson-box.png" alt="Аксон — упаковка"></button>
+          <button onclick="swap('akson-main','akson-use.png',this)"><img loading="lazy" decoding="async" src="akson-use.png" alt="Аксон в применении"></button>
+          <button onclick="swap('akson-main','akson-kit.png',this)"><img loading="lazy" decoding="async" src="akson-kit.png" alt="Аксон — комплект поставки"></button>
+        </div>
+      </div>
+      <div>
+        <span class="badge-inline">Карманный электростимулятор</span>
+        <h2>НейроДЭНС<span class="sep">·</span>Аксон</h2>
+        <p class="lead">Карманный электростимулятор чрескожный противоболевой. Компактный аппарат воздействует на болевую точку квазислучайными импульсами частотой 75–135 Гц — 15-минутный сеанс снимает острое ощущение боли без лекарств. Умещается в ладони, весит 40 г — удобно использовать дома и в дороге.</p>
+        <table class="spec-table">
+          <tr><th>Назначение</th><td>Противоболевая чрескожная электростимуляция</td></tr>
+          <tr><th>Программы</th><td>1 (квазислучайная частота 75–135 Гц)</td></tr>
+          <tr><th>Длительность сеанса</th><td>15 минут, автоотключение</td></tr>
+          <tr><th>Питание</th><td>Встроенный аккумулятор Li-Pol, зарядка USB-C</td></tr>
+          <tr><th>Вес</th><td>40 г</td></tr>
+          <tr><th>Габариты</th><td>51 × 33 × 41,5 мм</td></tr>
+          <tr><th>Регистрация</th><td>Медицинское изделие, РЗН 2022/18112 (бессрочно)</td></tr>
+          <tr><th>Гарантия</th><td>12 месяцев</td></tr>
+        </table>
+        <p class="kit"><b>В комплекте:</b> аппарат, кабель USB, руководство по эксплуатации, гарантийный талон.<br><a href="instrukciya-akson.pdf" target="_blank" rel="noopener">📄 Инструкция по эксплуатации (PDF)</a></p>
+        <div class="price">
+          <span class="val">—</span>
+        </div>
+        <div class="med-warning">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+          <span>Имеются противопоказания. Необходима консультация специалиста и ознакомление с инструкцией по применению.</span>
+        </div>
+        <div class="card-actions">
+          <button type="button" class="btn" data-product="akson" onclick="openOrder('akson')">Купить</button>
+          <a href="#apparaty" class="card-link">← Все аппараты</a>
+        </div>
+        <p class="consent">Нажимая «Купить», вы соглашаетесь с <a href="oferta.html">офертой</a> и <a href="politika.html">политикой конфиденциальности</a>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- СЕКЦИЯ 5 — Как это работает -->
 <section class="section section-tint" id="kak-rabotaet">
   <div class="container">
@@ -1010,13 +1114,21 @@ section[id],a[id]{scroll-margin-top:88px}
           <span class="doc-open">Открыть PDF →</span>
         </div>
       </a>
+      <a class="doc-card" href="ru-akson.pdf" target="_blank" rel="noopener">
+        <div class="doc-info">
+          <b>НейроДЭНС·Аксон</b>
+          <span>Рег. удостоверение<br>РЗН 2022/18112</span>
+          <span class="doc-open">Открыть PDF →</span>
+        </div>
+      </a>
     </div>
     <p style="text-align:center;margin:2em auto 0;font-weight:600">
       Инструкции по эксплуатации:
       <a href="instrukciya-artro.pdf" target="_blank" rel="noopener">Артро (PDF)</a> ·
       <a href="instrukciya-vertebra.pdf" target="_blank" rel="noopener">Вертебра (PDF)</a> ·
       <a href="instrukciya-kardio.pdf" target="_blank" rel="noopener">Кардио (PDF)</a> ·
-      <a href="instrukciya-axis.pdf" target="_blank" rel="noopener">Аксис (PDF)</a>
+      <a href="instrukciya-axis.pdf" target="_blank" rel="noopener">Аксис (PDF)</a> ·
+      <a href="instrukciya-akson.pdf" target="_blank" rel="noopener">Аксон (PDF)</a>
     </p>
   </div>
 </section>
@@ -1100,7 +1212,8 @@ var PRODUCTS = {
   artro:    { name: 'НейроДЭНС·Артро',    price: '27 000 ₽', pay: '' },
   vertebra: { name: 'НейроДЭНС·Вертебра', price: '99 000 ₽', pay: '' },
   kardio:   { name: 'НейроДЭНС·Кардио',   price: '—',        pay: '' },
-  axis:     { name: 'НейроДЭНС·Аксис',    price: '—',        pay: '' }
+  axis:     { name: 'НейроДЭНС·Аксис',    price: '—',        pay: '' },
+  akson:    { name: 'НейроДЭНС·Аксон',    price: '—',        pay: '' }
 };
 // 2) Ключ Web3Forms — чтобы анкета приходила на signum.treyd@yandex.ru.
 //    Получите бесплатно на web3forms.com (введите почту), вставьте ключ сюда:
@@ -1185,7 +1298,7 @@ orderForm.addEventListener('submit', function(e){
 
 // Заглавная стопка: стрелка циклически переключает 4 карточки
 var heroIdx = 0;
-var heroKeys = ['artro','vertebra','kardio','axis'];
+var heroKeys = ['artro','vertebra','kardio','axis','akson'];
 function swapHero(e){
   if(e){ e.preventDefault(); e.stopPropagation(); }
   heroIdx = (heroIdx + 1) % heroKeys.length;
