@@ -1267,14 +1267,14 @@ function roboUrl(key, email){
   var inv = String((Date.now() % 99999998) + 1);
   var sum = p.sum.toFixed(2);
   var receiptJson = JSON.stringify({
-    sno: 'osn',
+    sno: 'usn_income',
     items: [{
       name: p.name,
       quantity: 1,
       sum: p.sum,
-      tax: 'none',
+      tax: 'vat5',
       payment_method: 'full_payment',
-      payment_object: 'commodity'
+      payment_object: 'payment'
     }]
   });
   var receipt = encodeURIComponent(receiptJson);
