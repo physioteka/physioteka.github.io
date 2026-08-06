@@ -1263,10 +1263,10 @@ function md5(str){
   return out;
 }
 
-function roboUrl(key, email){
+function roboUrl(key, email, inv){
   var p = PRODUCTS[key];
   if(!p.sum) return '';
-  var inv = String((Date.now() % 99999998) + 1);
+  inv = inv || String((Date.now() % 99999998) + 1);
   var sum = p.sum.toFixed(2);
   var receiptJson = JSON.stringify({
     sno: 'usn_income',
@@ -1331,20 +1331,22 @@ orderForm.addEventListener('submit', function(e){
   orderErr.classList.remove('show');
 
   var p = PRODUCTS[currentProduct];
+  var invId = String((Date.now() % 99999998) + 1);
   var data = {
     'Товар': p.name + ' (' + p.price + ')',
     'ФИО': orderForm.fio.value.trim(),
     'Телефон': orderForm.phone.value.trim(),
     'Город получения': orderForm.city.value.trim(),
     'Адрес ПВЗ СДЭК': orderForm.pvz.value.trim(),
-    'E-mail': orderForm.email.value.trim()
+    'E-mail': orderForm.email.value.trim(),
+    'Номер заказа (InvId)': invId
   };
 
   var submitBtn = document.getElementById('orderSubmit');
   submitBtn.disabled = true; submitBtn.textContent = 'Отправляем…';
 
   function proceed(){
-    var url = roboUrl(currentProduct, data['E-mail']);
+    var url = roboUrl(currentProduct, data['E-mail'], invId);
     if(url){
       window.location.href = url;
     } else {
