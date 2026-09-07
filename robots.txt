@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /admin.html
+Disallow: /spasibo.html
 
 Sitemap: https://physioteka.ru/sitemap.xml
