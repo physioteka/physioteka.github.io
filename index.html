@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Физиотека — аппаратная физиотерапия НейроДЭНС для дома</title>
+<title>Аппаратная физиотерапия НейроДЭНС для дома | Физиотека</title>
 <meta name="description" content="Российские медицинские аппараты НейроДЭНС для домашней электростимуляции. Для спины и суставов. Оплата онлайн, доставка СДЭК.">
 <link rel="canonical" href="https://physioteka.ru/">
 <meta name="yandex-verification" content="b574fd97a73dfe66" />
@@ -14,7 +14,7 @@
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Физиотека">
-<meta property="og:title" content="Физиотека — аппаратная физиотерапия НейроДЭНС для дома">
+<meta property="og:title" content="Аппаратная физиотерапия НейроДЭНС для дома | Физиотека">
 <meta property="og:description" content="Российские медицинские аппараты НейроДЭНС для домашней электростимуляции. Для спины и суставов. Оплата онлайн, доставка СДЭК.">
 <meta property="og:url" content="https://physioteka.ru/">
 <meta property="og:image" content="https://physioteka.ru/og-image.jpg">
@@ -22,7 +22,7 @@
 <meta property="og:image:height" content="630">
 <meta property="og:locale" content="ru_RU">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Физиотека — аппаратная физиотерапия НейроДЭНС для дома">
+<meta name="twitter:title" content="Аппаратная физиотерапия НейроДЭНС для дома | Физиотека">
 <meta name="twitter:description" content="Российские медицинские аппараты НейроДЭНС для домашней электростимуляции. Для спины и суставов.">
 <meta name="twitter:image" content="https://physioteka.ru/og-image.jpg">
 <style>
@@ -475,6 +475,7 @@ section[id],a[id]{scroll-margin-top:88px}
       "@type": "WebSite",
       "@id": "https://physioteka.ru/#website",
       "name": "Физиотека",
+      "alternateName": ["Physioteka", "physioteka.ru"],
       "url": "https://physioteka.ru/",
       "inLanguage": "ru-RU",
       "publisher": { "@id": "https://physioteka.ru/#org" }
@@ -1322,7 +1323,7 @@ section[id],a[id]{scroll-margin-top:88px}
 </div>
 
 <!-- Cookie-уведомление -->
-<div class="cookie" id="cookie">
+<div class="cookie hidden" id="cookie">
   <p>Мы используем cookies для работы сайта и аналитики. Подробнее — в <a href="politika.html">Политике конфиденциальности</a>.</p>
   <div class="cookie-actions">
     <button class="btn" id="cookie-accept">Принять</button>
@@ -1666,8 +1667,10 @@ nav.addEventListener('click',function(e){ if(e.target.tagName==='A') nav.classLi
 
 // Cookie
 var cookieChoice=null;
+try{ cookieChoice=localStorage.getItem('cookieChoice'); }catch(e){}
 var cookie=document.getElementById('cookie');
-function closeCookie(choice){ cookieChoice=choice; cookie.classList.add('hidden'); }
+if(!cookieChoice) cookie.classList.remove('hidden');
+function closeCookie(choice){ cookieChoice=choice; try{ localStorage.setItem('cookieChoice',choice); }catch(e){} cookie.classList.add('hidden'); }
 function openCookie(e){ if(e){ e.preventDefault(); } cookie.classList.remove('hidden'); }
 document.getElementById('cookie-accept').addEventListener('click',function(){ closeCookie('all'); });
 document.getElementById('cookie-necessary').addEventListener('click',function(){ closeCookie('necessary'); });
